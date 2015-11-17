@@ -33,15 +33,107 @@ public class Laptop
         this.Manufacturer = manufacturer1;
     }
 
-    public string Model { get; set; }
-    public string Manufacturer { get; set; }
-    public string Processor { get; set; }
-    public int RAM { get; set; }
-    public string GraphicsCard { get; set; }
-    public string HDD { get; set; }
-    public string Screen { get; set; }
+    public string Model
+    {
+        get { return this.model; }
+        set
+        {
+            if (String.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Model can not be empty!");
+            }
+                this.model = value;
+        }
+    }
+
+    public string Manufacturer
+    {
+        get { return this.manufacturer; }
+        set
+        {
+            if (String.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Manufacturer can not be empty!");
+            }
+            this.manufacturer = value;
+        }
+    }
+
+    public string Processor
+    {
+        get { return this.processor; }
+        set
+        {
+            if (String.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Processor can not be empty!");
+            }
+            this.processor = value;
+        }
+    }
+    public int RAM
+    {
+        get { return this.rAM; }
+        set
+        {
+            if (value <= 0)
+            {
+                throw new ArgumentException("RAM can not be negative or null!");
+            }
+            this.rAM = value;
+        }
+    }
+    public string GraphicsCard
+    {
+        get { return this.graphicsCard; }
+        set
+        {
+            if (String.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Graphics card can not be empty!");
+            }
+            this.graphicsCard = value;
+        }
+    }
+    public string HDD
+    {
+        get { return this.hDD; }
+        set
+        {
+            if (String.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("HDD can not be empty!");
+            }
+            this.hDD = value;
+        }
+    }
+    public string Screen
+    {
+        get { return this.screen; }
+        set
+        {
+            if (String.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Screen can not be empty!");
+            }
+            this.screen = value;
+        }
+    }
+
     public Battery Battery { get; set; }
-    public decimal Price { get; set; }
+
+    public decimal Price
+    {
+        get { return this.price; }
+        set
+        {
+            if (value <= 0)
+            {
+                throw new ArgumentException("Price can not be negative or null!");
+            }
+            this.price = value;
+        }
+    }
 
     public override string ToString()
     {

@@ -11,7 +11,7 @@ public class LaptopShopMain
         string graphicsCard = "Intel HD Graphics 4400";
         string HDD = "128GB SSD";
         string screen = "13.3\"(33.78 cm) – 3200 x 1800(QHD +), IPS sensor display";
-        Battery battery = new Battery("Li-Ion, 4-cells, 2550 mAh", 4.5);
+        Battery battery = new Battery("Li-Ion, 4-cells, 2550 mAh", -4.5);
         decimal price = 2259.00m;
 
         Laptop laptop = new Laptop(model, manufacturer);
