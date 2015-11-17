@@ -16,6 +16,7 @@ public class PersonMain
         Person person = new Person(name, age, email);
         Person personWithoutEmail = new Person(name, age);
 
+        Console.WriteLine();
         Console.WriteLine(person + "\n********************\n" + personWithoutEmail);
     }
 }

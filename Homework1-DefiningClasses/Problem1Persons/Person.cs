@@ -16,8 +16,7 @@ public class Person
 
     public Person(string name, int age)
         : this(name, age, null)
-    {
-    }
+    { }
 
     public string Name
     {
@@ -25,10 +24,8 @@ public class Person
         {
             return this.name;
         }
-
         set
         {
-           
             if (string.IsNullOrEmpty(value))
             {
                 throw new ArgumentException("Name can not be null.");
@@ -43,10 +40,8 @@ public class Person
         {
             return this.age;
         }
-
         set
-        {
-          
+        {         
             if (value < 1 || value > 100)
             {
                 throw new ArgumentException("Invalid age!");
@@ -61,7 +56,6 @@ public class Person
         {
             return this.email;
         }
-
         set
         {           
             if (value != null && !value.Contains("@"))
