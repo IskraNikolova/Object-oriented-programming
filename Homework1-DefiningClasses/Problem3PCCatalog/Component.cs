@@ -7,7 +7,11 @@ public class Component
     private string details;
     private decimal price;
 
-    public Component (string name, decimal price, string details = null)
+    public Component(string name, decimal price) : this(name, price, null)
+    {       
+    }
+
+    public Component (string name, decimal price, string details)
     {
         this.Name = name;
         this.Details = details;
@@ -29,21 +33,7 @@ public class Component
             this.name = value;
         }
     }
-    public string Details
-    {
-        get
-        {
-            return this.details;
-        }
-        set
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                throw new ArgumentException("Details can not be null.");
-            }
-            this.details = value;
-        }
-    }
+    public string Details { get; set; }
     public decimal Price
     {
         get { return this.price; }

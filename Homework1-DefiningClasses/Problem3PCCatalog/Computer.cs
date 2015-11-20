@@ -28,7 +28,7 @@ public class Computer
         {
             if (string.IsNullOrEmpty(value))
             {
-                throw new ArgumentException("Name can not be null.");
+                throw new ArgumentNullException("Name can not be null.");
             }
             this.name = value;
         }
@@ -55,20 +55,10 @@ public class Computer
     public override string ToString()
     {
         Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("bg-BG");
-        string result = String.Empty;
-        for (int i = 0; i < this.Components.Count; i++)
-        {
-            string formatResult = String.Empty;
-            if (this.Components != null)
-            {
-                formatResult = $"{this.Components[i].Name} - {this.Components[i].Price:F2}lv.\n{this.Components[i].Details}\n";
-            }
-            else
-            {
-                formatResult = $"{this.Components[i].Name} - {this.Components[i].Price:F2}lv.";
-            }
-            result += formatResult;
-        }
+        var result = this.Components.Select(component => this.Components != null ?
+        $"{component.Name}: {component.Details} {component.Price:F2}lv.\n" : 
+        $"{component.Name} {component.Price:F2}lv.")
+            .Aggregate(string.Empty, (current, formatResult) => current + formatResult);
         return $"{this.Name}\n_____________________________\n{result}\n*Total price: {this.Price:F2}lv.";
     }
 }

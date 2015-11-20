@@ -14,9 +14,9 @@ public class LaptopShopMain
         Battery battery = new Battery("Li-Ion, 4-cells, 2550 mAh", 4.5);
         decimal price = 2259.00m;
 
-        Laptop laptop = new Laptop(model, manufacturer);
-        Laptop laptopFullInfo = new Laptop(model, manufacturer, battery: battery, price: price, processor: processor, 
-            rAM: RAM, graphicsCard: graphicsCard, hDD: HDD, screen: screen);
+        Laptop laptop = new Laptop(model, price);
+        Laptop laptopFullInfo = new Laptop(model, price: price, processor: processor, 
+            rAM: RAM, graphicsCard: graphicsCard, hDD: HDD, screen: screen, battery: battery, manufacturer: manufacturer);
 
 
         Console.WriteLine();
@@ -25,6 +25,13 @@ public class LaptopShopMain
         Console.WriteLine();
         Console.WriteLine("**************************");
         Console.WriteLine(laptop);
+
+        Console.WriteLine();
+        Console.WriteLine("EXCEPTION");
+        //string manufacturerEmptyTest = String.Empty;
+        //Laptop laptopFullInfo2 = new Laptop(model, price: price, processor: processor,
+        //  rAM: RAM, graphicsCard: graphicsCard, hDD: HDD, screen: screen, battery: battery, manufacturer: manufacturerEmptyTest);
+        //Console.WriteLine(laptopFullInfo2); //throw new ArgumentNullException
     }
 }
 

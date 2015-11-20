@@ -12,8 +12,7 @@ public class Laptop
     private Battery battery;
     private decimal price;
 
-    public Laptop(string model, string manufacturer, Battery battery, decimal price = 0.0m, string processor = null, int rAM = 0, 
-        string graphicsCard = null, string hDD = null, string screen = null)
+    public Laptop(string model, decimal price, string processor = null, int rAM = 0, string graphicsCard = null, string hDD = null, string screen = null, Battery battery = null, string manufacturer = null)
     {
         this.Model = model;
         this.Manufacturer = manufacturer;
@@ -27,10 +26,10 @@ public class Laptop
 
     }
 
-    public Laptop(string model, string manufacturer1)
+    public Laptop(string model, decimal price)
     {
         this.Model = model;
-        this.Manufacturer = manufacturer1;
+        this.Price = price;
     }
 
     public string Model
@@ -40,7 +39,7 @@ public class Laptop
         {
             if (String.IsNullOrEmpty(value))
             {
-                throw new ArgumentException("Model can not be empty!");
+                throw new ArgumentNullException("Model can not be empty!");
             }
                 this.model = value;
         }
@@ -53,7 +52,7 @@ public class Laptop
         {
             if (String.IsNullOrEmpty(value))
             {
-                throw new ArgumentException("Manufacturer can not be empty!");
+                throw new ArgumentNullException("Manufacturer can not be empty!");
             }
             this.manufacturer = value;
         }
@@ -66,7 +65,7 @@ public class Laptop
         {
             if (String.IsNullOrEmpty(value))
             {
-                throw new ArgumentException("Processor can not be empty!");
+                throw new ArgumentNullException("Processor can not be empty!");
             }
             this.processor = value;
         }
@@ -90,7 +89,7 @@ public class Laptop
         {
             if (String.IsNullOrEmpty(value))
             {
-                throw new ArgumentException("Graphics card can not be empty!");
+                throw new ArgumentNullException("Graphics card can not be empty!");
             }
             this.graphicsCard = value;
         }
@@ -102,7 +101,7 @@ public class Laptop
         {
             if (String.IsNullOrEmpty(value))
             {
-                throw new ArgumentException("HDD can not be empty!");
+                throw new ArgumentNullException("HDD can not be empty!");
             }
             this.hDD = value;
         }
@@ -114,7 +113,7 @@ public class Laptop
         {
             if (String.IsNullOrEmpty(value))
             {
-                throw new ArgumentException("Screen can not be empty!");
+                throw new ArgumentNullException("Screen can not be empty!");
             }
             this.screen = value;
         }
@@ -146,7 +145,7 @@ public class Laptop
         }
         else
         {
-            result = $"model: {this.Model}\nmanufacturer: {this.Manufacturer}";
+            result = $"model: {this.Model}\nprice: {this.Price}";
         }
         return result;
     }

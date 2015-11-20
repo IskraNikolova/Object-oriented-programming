@@ -13,7 +13,7 @@ public class PCCatalog
 
         string graphicsCard = "Video Card: ASUS STRIX-GTX950-DC2OC-2GD5-GAMING";
         string graphicsCardDetails = "Members: 2048MB GDDR5 128 bit";
-        decimal priceGraphicsCard = 1550.0m;
+        decimal priceGraphicsCard = 550.0m;
 
         Component components = new Component(motherboard, priceMotherBoard);
         Component components2 = new Component(processor, pricePocessor);
@@ -26,6 +26,7 @@ public class PCCatalog
 
         string nameComputer = "Apple MacBook 12 Space Gray";
         Computer comp = new Computer(nameComputer, listOfCompo);
+
 
         string motherboard2 = "Motherboard (GA-Z97X-UD3H)";
         decimal priceMotherBoard2 = 230.0m;
@@ -50,14 +51,14 @@ public class PCCatalog
         Computer comp2 = new Computer(nameComputer2, listOfCompo2);
 
         List<Computer> listForSort = new List<Computer> {comp, comp2};
-
-
         listForSort.Sort((x, y) => x.Price.CompareTo(y.Price));
-        for (int i = 0; i < listForSort.Count; i++)
+
+
+        foreach (Computer computer in listForSort)
         {
-            Console.WriteLine("------------------------------------------------------------------------------");
+            Console.WriteLine("------------------------------------------------------");
             Console.WriteLine();
-            Console.WriteLine(listForSort[i]);
+            Console.WriteLine(computer);
         }
     }
 }

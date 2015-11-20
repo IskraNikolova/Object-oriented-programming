@@ -28,7 +28,7 @@ public class Person
         {
             if (string.IsNullOrEmpty(value))
             {
-                throw new ArgumentException("Name can not be null.");
+                throw new ArgumentNullException("Name can not be null.");
             }
             this.name = value;
         }
@@ -58,7 +58,7 @@ public class Person
         }
         set
         {           
-            if (value != null && !value.Contains("@"))
+            if (!string.IsNullOrEmpty(value) && !value.Contains("@"))
             {
                 throw new ArgumentException("Invalid email!");
             }
@@ -70,8 +70,8 @@ public class Person
     {
         string result = String.Empty;
 
-        result = this.Email != null ? $"Name: {this.Name}, Age: {this.Age}, Email: {this.Email}" :
-                                      $"Name: {this.Name}, Age: {this.Age}";
+        result = !string.IsNullOrEmpty(this.Email) ? $"Name: {this.Name}, Age: {this.Age}, Email: {this.Email}" :
+                                      $"Name: {this.Name}, Age: {this.Age}, No email";
 
         return result;
     }
