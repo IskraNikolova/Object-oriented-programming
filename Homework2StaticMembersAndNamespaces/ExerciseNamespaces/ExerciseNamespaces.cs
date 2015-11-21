@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace ExerciseNamespaces
 {
     public class ExerciseNamespaces
