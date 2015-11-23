@@ -46,7 +46,7 @@
     <Compile Include="Path3D.cs" />
     <Compile Include="PathsMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Save.cs" />
+    <Compile Include="Storage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

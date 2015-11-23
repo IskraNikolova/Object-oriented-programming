@@ -5,7 +5,7 @@ namespace Problem3Paths
 {
     public class PathsMain
     {
-        private const string File = @"../../path.txt";
+        private const string File = @"../../path.xml";
 
         public static void Main()
         {
@@ -13,8 +13,8 @@ namespace Problem3Paths
                 new Point3D(1, 2, 3),
                 new Point3D(4, 5, 2));
        
-            Save.SavePath(File, path);
-            Path3D path2 = Save.LoadPath(File);
+            Storage.SavePath(File, path);
+            Path3D path2 = Storage.LoadPath(File);
 
             Console.WriteLine(string.Join(Environment.NewLine, path2.Path));
         }
