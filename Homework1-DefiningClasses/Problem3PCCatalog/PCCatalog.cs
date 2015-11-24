@@ -29,7 +29,7 @@ public class PCCatalog
 
 
         string motherboard2 = "Motherboard (GA-Z97X-UD3H)";
-        decimal priceMotherBoard2 = 230.0m;
+        decimal priceMotherBoard2 = 2230.0m;
 
         string processor2 = "Intel® Core™ i7-6820HK Processor";
         decimal priceProcessor2 = 500.0m;
