@@ -1,27 +1,39 @@
 ﻿
 using System.Collections.Generic;
+using System.Text;
 using Problem1Point3D;
 
-namespace Problem3Paths
+public class Path3D
 {
-    public class Path3D
+    private readonly List<Point3D> path = new List<Point3D>();
+
+    public Path3D(params Point3D[] list)
     {
-        private List<Point3D> path;
+        this.AddPoints(list);
+    }
 
-        public Path3D(params Point3D[] points)
+    public List<Point3D> Path
+    {
+        get { return this.path; }
+    }
+
+    public void AddPoints(params Point3D[] list)
+    {
+        foreach (var point3D in list)
         {
-            this.Path = new List<Point3D>();
-            this.AddPoints(points);
-        }
-
-        public List<Point3D> Path { get; set; }
-
-        private void AddPoints(params Point3D[] points)
-        {
-            foreach (var point3D in points)
-            {
-                this.Path.Add(point3D);
-            }
+            this.path.Add(point3D);
         }
     }
+
+    public override string ToString()
+    {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < this.Path.Count; i++)
+        {
+            result.AppendFormat("point{0}: x={1} y={2} z={3}\n", i + 1, this.Path[i].X, this.Path[i].Y, this.Path[i].Z);
+        }
+
+        return result.ToString();
+    }
 }
+
