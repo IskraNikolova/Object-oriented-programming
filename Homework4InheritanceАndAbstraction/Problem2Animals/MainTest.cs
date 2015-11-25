@@ -19,8 +19,7 @@ public class MainTest
         animals.Add(pisi);
         animals.Add(tomi);
 
-        Console.WriteLine("Average: {0}", animals.Average(a => a.Age));
-        
+        Console.WriteLine("Average: {0}", animals.Average(a => a.Age));        
     }
 }
 
