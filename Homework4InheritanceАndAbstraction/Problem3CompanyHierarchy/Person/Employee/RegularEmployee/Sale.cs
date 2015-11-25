@@ -1,9 +1,10 @@
 ﻿
 using System;
+using Problem3CompanyHierarchy.Interfaces;
 
 namespace Problem3CompanyHierarchy.Person.Employee
 {
-    public class Sale
+    public class Sale : ISale
     {
         private string productName;
         private DateTime date;

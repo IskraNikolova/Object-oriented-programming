@@ -5,6 +5,6 @@ namespace Problem3CompanyHierarchy.Interfaces
 {
     public interface IManager
     {
-        HashSet<RegularEmployee> Employees { get; set; }
+        List<Employee> Employees { get; set; }
     }
 }

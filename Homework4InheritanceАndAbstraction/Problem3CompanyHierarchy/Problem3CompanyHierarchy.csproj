@@ -50,6 +50,7 @@
     <Compile Include="Interfaces\IPerson.cs" />
     <Compile Include="Interfaces\IProject.cs" />
     <Compile Include="Interfaces\ISale.cs" />
+    <Compile Include="Interfaces\ISalesEmployee.cs" />
     <Compile Include="MainTest.cs" />
     <Compile Include="Person\Customer\Customer.cs" />
     <Compile Include="Person\Employee\RegularEmployee\Developer.cs" />
