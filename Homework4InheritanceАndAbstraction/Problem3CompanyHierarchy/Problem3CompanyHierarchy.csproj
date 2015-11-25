@@ -43,10 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ICustomer.cs" />
     <Compile Include="Interfaces\IDeveloper.cs" />
     <Compile Include="Interfaces\IEmployee.cs" />
     <Compile Include="Interfaces\IManager.cs" />
     <Compile Include="Interfaces\IPerson.cs" />
+    <Compile Include="Interfaces\IProject.cs" />
+    <Compile Include="Interfaces\ISale.cs" />
     <Compile Include="MainTest.cs" />
     <Compile Include="Person\Customer\Customer.cs" />
     <Compile Include="Person\Employee\RegularEmployee\Developer.cs" />

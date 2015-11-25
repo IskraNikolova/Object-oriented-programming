@@ -1,11 +1,13 @@
 ﻿
 using System;
+using Problem3CompanyHierarchy.Interfaces;
 
 namespace Problem3CompanyHierarchy.Person.Customer
 {
-    public class Customer : global::Person
+    public class Customer : global::Person, ICustomer
     {
         private decimal amount;
+
         public Customer(string id, string firstName, string lastName, decimal amount) 
             : base(id, firstName, lastName)
         {
@@ -19,7 +21,7 @@ namespace Problem3CompanyHierarchy.Person.Customer
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("Amount cannot be negatrive!");
+                    throw new ArgumentOutOfRangeException("Amount cannot be negative!");
                 }
                 this.amount = value;
             }

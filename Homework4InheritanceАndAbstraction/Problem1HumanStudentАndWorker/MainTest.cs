@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 
 public class MainTest
 {
@@ -53,8 +52,7 @@ public class MainTest
 
         List<Human> orderToPrint = new List<Human>();
         orderToPrint.AddRange(orderedByName);
-        orderToPrint.ForEach(i => Console.WriteLine(i.FirstName + " " +  i.LastName));
-        //Console.WriteLine(string.Join("\n", orderedByName));
+        orderToPrint.ForEach(i => Console.WriteLine(i.FirstName + " " + i.LastName));
     }
 }
 

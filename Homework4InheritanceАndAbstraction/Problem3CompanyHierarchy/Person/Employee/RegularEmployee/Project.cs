@@ -1,9 +1,10 @@
 ﻿
 using System;
+using Problem3CompanyHierarchy.Interfaces;
 
 namespace Problem3CompanyHierarchy.Person.Employee
 {
-    public class Project
+    public class Project : IProject
     {
         private string projectName;
         private DateTime projectStartDate;
@@ -58,12 +59,9 @@ namespace Problem3CompanyHierarchy.Person.Employee
             }
         }
 
-        public void CloseProject(string state)
+        public void CloseProject()
         {
-            if (this.State == "open")
-            {
-                this.State = "closed";
-            }
+             this.State = "closed";          
         }
 
         public override string ToString()

@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.Linq;
 using Problem3CompanyHierarchy.Interfaces;
 
 namespace Problem3CompanyHierarchy.Person.Employee
@@ -17,11 +18,7 @@ namespace Problem3CompanyHierarchy.Person.Employee
 
         public override string ToString()
         {
-            string result = string.Empty;
-            foreach (var project in this.Projects)
-            {
-                result += project + "\n";
-            }
+            string result = this.Projects.Aggregate(string.Empty, (current, project) => current + (project + "\n"));
             return base.ToString() + $"{result}";
         }
     }
