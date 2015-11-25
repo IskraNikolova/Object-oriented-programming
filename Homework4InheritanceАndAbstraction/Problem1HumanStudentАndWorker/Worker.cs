@@ -25,7 +25,7 @@ public class Worker : Human
     public override string ToString()
     {
         Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("bg-BG");
-        return $"{this.FirstName} {this.LastName} {this.MoneyPerHour():F2}lv.";
+        return base.ToString() + $" - money for hour {this.MoneyPerHour():F2}lv.";
     }
 }
 

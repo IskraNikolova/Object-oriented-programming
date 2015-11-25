@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 public class MainTest
 {
@@ -23,6 +24,7 @@ public class MainTest
         var ordered =  workers.OrderByDescending(a => a.MoneyPerHour());
         Console.WriteLine(string.Join("\n", ordered));
         Console.WriteLine("***************************");
+        Console.WriteLine();
 
         var students = new List<Student>
         {
@@ -41,13 +43,18 @@ public class MainTest
         var orderedStudents = students.OrderBy(a => a.FacultyNumber);
         Console.WriteLine(string.Join("\n", orderedStudents));
 
-        var humans = new List<Human>();
+        List<Human> humans = new List<Human>();
         humans.AddRange(workers);
         humans.AddRange(students);
 
         Console.WriteLine("***************************");
         var orderedByName = humans.OrderBy(a => a.FirstName).ThenBy(a => a.LastName);
-        Console.WriteLine(string.Join("\n", orderedByName));
+
+
+        List<Human> orderToPrint = new List<Human>();
+        orderToPrint.AddRange(orderedByName);
+        orderToPrint.ForEach(i => Console.WriteLine(i.FirstName + " " +  i.LastName));
+        //Console.WriteLine(string.Join("\n", orderedByName));
     }
 }
 

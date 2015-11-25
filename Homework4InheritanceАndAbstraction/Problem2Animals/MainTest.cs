@@ -21,7 +21,7 @@ public class MainTest
             Console.WriteLine("_____________________");
         }
 
-        Console.WriteLine("Their average of age is {0}yaers.", animals.Average(a => a.Age));
+        Console.WriteLine("Their average of age is {0} years.", animals.Average(a => a.Age));
         
     }
 }

@@ -25,7 +25,7 @@ public class Student : Human
 
     public override string ToString()
     {
-        return $"{this.FirstName} {this.LastName} {this.FacultyNumber}";
+        return base.ToString() + $" - faculty number {this.FacultyNumber}";
     }
 }
 
