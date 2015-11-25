@@ -22,10 +22,7 @@ public class MainTest
             new HashSet<Project>() {new Project("otherProjectFirst", new DateTime(2013, 08, 21), "closed", "some details"),
                 new Project("OtherProject", new DateTime(2015, 09, 08), "open")});
 
-        List<Person> persons = new List<Person>();
-        persons.Add(manager);
-        persons.Add(salesEmployee);
-        persons.Add(developer);
+        List<Person> persons = new List<Person> {manager, salesEmployee, developer};
 
         foreach (var person in persons)
         {
