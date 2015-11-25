@@ -43,19 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animal.cs" />
-    <Compile Include="Cat.cs" />
-    <Compile Include="Dog.cs" />
-    <Compile Include="Frog.cs" />
-    <Compile Include="ISoundProducible.cs" />
-    <Compile Include="Kitten.cs" />
+    <Compile Include="Animal\Animal.cs" />
+    <Compile Include="Animal\Cat\Cat.cs" />
+    <Compile Include="Animal\Dog.cs" />
+    <Compile Include="Animal\Frog.cs" />
+    <Compile Include="Interface\ISoundProducible.cs" />
+    <Compile Include="Animal\Cat\Kitten.cs" />
     <Compile Include="MainTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tomcat.cs" />
+    <Compile Include="Animal\Cat\Tomcat.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

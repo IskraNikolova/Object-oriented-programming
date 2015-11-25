@@ -12,14 +12,17 @@ public class MainTest
         Kitten pisi = new Kitten("Pisi", 3);
         Tomcat tomi = new Tomcat("Tom", 5);
 
-        List<Animal> animals = new List<Animal>();
-        animals.Add(sharo);
-        animals.Add(mimi);
-        animals.Add(kvak);
-        animals.Add(pisi);
-        animals.Add(tomi);
+        List<Animal> animals = new List<Animal> {sharo, mimi, kvak, pisi, tomi};
 
-        Console.WriteLine("Average: {0}", animals.Average(a => a.Age));        
+        foreach (var animal in animals)
+        {
+            Console.WriteLine(animal);           
+            animal.ProduceSound();
+            Console.WriteLine("_____________________");
+        }
+
+        Console.WriteLine("Their average of age is {0}yaers.", animals.Average(a => a.Age));
+        
     }
 }
 
