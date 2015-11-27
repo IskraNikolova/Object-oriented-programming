@@ -13,7 +13,7 @@ public class Customer
     public string Type
     {
         get { return this.type; }
-        set
+        private set
         {
             if (value != "individuals" && value != "companies")
             {
