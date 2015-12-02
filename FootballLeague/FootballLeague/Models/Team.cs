@@ -55,9 +55,9 @@ namespace FootballLeague.Models
             }
             set
             {
-                if (value.Year > 1850)
+                if (value.Year < 1850)
                 {
-                    throw new ArgumentException($"Year cannot be after {validationsYear}");
+                    throw new ArgumentException($"Year cannot be before {validationsYear}");
                 }
             }
         }
