@@ -35,7 +35,7 @@ namespace Problem3GenericList
             Console.WriteLine();
 
             names.Clear();
-            Console.WriteLine(names);
+            Console.WriteLine(names + "is clearing");
             Console.WriteLine("************");
 
             GenericList<int> ints = new GenericList<int>();
