@@ -12,7 +12,6 @@ namespace Problem2FractionCalculator
             Console.WriteLine(result.Numerator);
             Console.WriteLine(result.Denominator);
             Console.WriteLine(result);
-
         }
     }
 }

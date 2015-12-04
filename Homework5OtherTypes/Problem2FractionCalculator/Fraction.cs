@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System.Runtime;
+﻿using System;
 
 namespace Problem2FractionCalculator
 {
@@ -16,20 +15,32 @@ namespace Problem2FractionCalculator
         }
 
         public decimal Numerator { get; set; }
-        public decimal Denominator { get; set; }
+
+        public decimal Denominator
+        {
+            get { return this.denominator; }
+            set
+            {
+                if (value == 0)
+                {
+                    throw new ArithmeticException("Denomerator cannot be 0");
+                }
+                this.denominator = value;
+            }
+        }
 
         public static Fraction operator +(Fraction f1, Fraction f2)
         {
             decimal newNumerator = (f1.Numerator*f2.Denominator) + (f2.Numerator*f1.Denominator);
-            decimal newDenumerator = (f1.Denominator*f2.Denominator);
-            return new Fraction(newNumerator, newDenumerator);
+            decimal newDenomerator = (f1.Denominator*f2.Denominator);
+            return new Fraction(newNumerator, newDenomerator);
         }
 
         public static Fraction operator -(Fraction f1, Fraction f2)
         {
             decimal newNumerator = (f1.Numerator * f2.Denominator) - (f2.Numerator * f1.Denominator);
-            decimal newDenumerator = (f1.Denominator * f2.Denominator);
-            return new Fraction(newNumerator, newDenumerator);
+            decimal newDenomerator = (f1.Denominator * f2.Denominator);
+            return new Fraction(newNumerator, newDenomerator);
         }
 
         public override string ToString()
