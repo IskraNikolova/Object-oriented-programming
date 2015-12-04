@@ -21,27 +21,29 @@ namespace Problem3GenericList
             names.Remove(0);
             Console.WriteLine(names);
             Console.WriteLine();
+            //names.Remove(11); Exception
 
             names.Insert(2, "New name - Isi");
             Console.WriteLine(names);
+            //names.Insert(10, "Exception");
 
             Console.WriteLine();
-            Console.WriteLine(names.Contains("Bobo") + " - that contains");
+            Console.WriteLine(names.Contains("Bobo") + " - that contains.");
 
             Console.WriteLine();
             Console.WriteLine($"Index of this value is {names.Find("Lili")}.");
             Console.WriteLine();
 
             names.Clear();
-            Console.WriteLine(names + " - Collection is clear");
-            Console.WriteLine();
+            Console.WriteLine(names);
+            Console.WriteLine("************");
 
             GenericList<int> ints = new GenericList<int>();
             ints[0] = 1; // add value on the position
             ints[1] = 2;
             ints[2] = 3;
             ints[3] = 4;
-       
+            //Console.WriteLine(ints[5]); Out of range exception!
             Console.WriteLine("Min value is " + Min(ints));
             Console.WriteLine("Max value is " + Max(ints));
             

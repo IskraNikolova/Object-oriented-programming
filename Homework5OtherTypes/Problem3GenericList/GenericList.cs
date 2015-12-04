@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Text;
 
 namespace Problem3GenericList
 {
+    [Version(2,13213424)]
     public class GenericList<T>
         where T : IComparable<T>
     {
@@ -46,6 +46,7 @@ namespace Problem3GenericList
         /// <param name="index">Index of value</param>
         public void Remove(int index)
         {
+            ValidateIndex(index);
             this.array[index] = default(T);
             for (int i = index; i < this.array.Length - 1; i++)
             {
@@ -63,6 +64,7 @@ namespace Problem3GenericList
         {
             get
             {
+                ValidateIndex(index);
                 return this.array[index];
             }
             set
@@ -79,6 +81,7 @@ namespace Problem3GenericList
         /// <param name="value">Value for insert</param>
         public void Insert(int index, T value)
         {
+            ValidateIndex(index);
             T[] arrayCopy = new T[currentCapacity];
             for (int i = 0; i < currentCapacity; i++)
             {
@@ -145,12 +148,19 @@ namespace Problem3GenericList
         public override string ToString()
         {
             T[] resultaArray = new T[index];
+
             for (int i = 0; i < index; i++)
             {
                 resultaArray[i] = this.array[i];
             }
 
-            string result = "[" + String.Join(", ", resultaArray) + "]";
+            string result = string.Empty;
+
+            if (resultaArray.Length > 0)
+            {
+                result = "[" + String.Join(", ", resultaArray) + "]";
+            }
+        
             return result;
         }
 
@@ -167,6 +177,34 @@ namespace Problem3GenericList
                 this.array = newArray;
                 this.currentCapacity = newCapacity;
             }
-        }       
+        }
+
+        private void ValidateIndex(int index)
+        {
+            if (index >= this.index || index < 0)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(index),
+                    message: "Index is out of range!");
+            }
+        }
+
+        public string Version()
+        {
+            var versionNum = string.Empty;
+            var type = typeof(GenericList<T>);
+            var allAttributes = type.GetCustomAttributes(false);
+            foreach (var attr in allAttributes)
+            {
+                var attribute = attr as VersionAttribute;
+                if (attribute != null)
+                {
+                    var version = attribute;
+                    versionNum = $"GenericList<T> version {version.Major}.{version.Minor}";
+                }
+            }
+
+            return versionNum;
+        }
     }
 }

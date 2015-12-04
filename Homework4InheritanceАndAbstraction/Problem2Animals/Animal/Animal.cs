@@ -56,7 +56,7 @@ public abstract class Animal : ISoundProducible
 
     public override string ToString()
     {
-        return $"I am a {GetType()}, my name is {this.Name}. I am {this.Age} years old.\nMy gender is {this.Gender}";
+        return $"I am a {GetType().Name}, my name is {this.Name}. I am {this.Age} years old.\nMy gender is {this.Gender}";
     }
 }
 

@@ -1,4 +1,4 @@
-﻿internal interface ISoundProducible
+﻿public interface ISoundProducible
 {
     void ProduceSound();
 }
