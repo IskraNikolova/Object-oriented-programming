@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Component.cs" />
     <Compile Include="Computer.cs" />
-    <Compile Include="PCCatalog.cs" />
+    <Compile Include="PcCatalog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

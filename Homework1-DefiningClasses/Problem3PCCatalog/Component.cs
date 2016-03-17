@@ -1,51 +1,60 @@
-﻿
-using System;
-
-public class Component
+﻿namespace Problem3PCCatalog
 {
-    private string name;
-    private string details;
-    private decimal price;
+    using System;
 
-    public Component(string name, decimal price) : this(name, price, null)
-    {       
-    }
-
-    public Component (string name, decimal price, string details)
+    public class Component
     {
-        this.Name = name;
-        this.Details = details;
-        this.Price = price;
-    }
+        private string name;
+        private decimal price;
 
-    public string Name
-    {
-        get
+        public Component(string name, string details, decimal price)
         {
-            return this.name;
+            this.Name = name;
+            this.Details = details;
+            this.Price = price;
         }
-        set
+
+        public Component(string name, decimal price)
+            : this(name, null, price)
         {
-            if (string.IsNullOrEmpty(value))
+        }
+
+        public string Name
+        {
+            get
             {
-                throw new ArgumentException("Name can not be null.");
+                return this.name;
             }
-            this.name = value;
-        }
-    }
-    public string Details { get; set; }
-    public decimal Price
-    {
-        get { return this.price; }
-        set
-        {
-            if (value <= 0)
-            {
-                throw new ArgumentException("Price can not be negative or null!");
-            }
-            this.price = value;
-        }
-    }
 
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Name can not be null.");
+                }
+
+                this.name = value;
+            }
+        }
+
+        public string Details { get; set; }
+
+        public decimal Price
+        {
+            get
+            {
+                return this.price;
+            }
+
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Price can not be negative or null!");
+                }
+
+                this.price = value;
+            }
+        }
+    }
 }
-
