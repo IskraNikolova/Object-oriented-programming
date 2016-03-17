@@ -1,79 +1,87 @@
-﻿
-using System;
-
-public class Person
+﻿namespace Problem1Persons
 {
-    private string name;
-    private int age;
-    private string email;
+    using System;
 
-    public Person(string name, int age, string email)
+    public class Person
     {
-        this.Name = name;
-        this.Age = age;
-        this.Email = email;
-    }
+        private string name;
+        private int age;
+        private string email;
 
-    public Person(string name, int age)
-        : this(name, age, null)
-    { }
-
-    public string Name
-    {
-        get
+        public Person(string name, int age, string email)
         {
-            return this.name;
+            this.Name = name;
+            this.Age = age;
+            this.Email = email;
         }
-        set
+
+        public Person(string name, int age)
+            : this(name, age, null)
         {
-            if (string.IsNullOrEmpty(value))
+        }
+
+        public string Name
+        {
+            get
             {
-                throw new ArgumentNullException("Name can not be null.");
+                return this.name;
             }
-            this.name = value;
-        }
-    }
 
-    public int Age
-    {
-        get
-        {
-            return this.age;
-        }
-        set
-        {         
-            if (value < 1 || value > 100)
+            set
             {
-                throw new ArgumentException("Invalid age!");
-            }
-            this.age = value;
-        }
-    }
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException(nameof(value),"Name can not be null.");
+                }
 
-    public string Email
-    {
-        get
+                this.name = value;
+            }
+        }
+
+        public int Age
         {
-            return this.email;
-        }
-        set
-        {           
-            if (!string.IsNullOrEmpty(value) && !value.Contains("@"))
+            get
             {
-                throw new ArgumentException("Invalid email!");
+                return this.age;
             }
-            this.email = value;
+
+            set
+            {         
+                if (value < 1 || value > 100)
+                {
+                    throw new ArgumentException("Invalid age!");
+                }
+
+                this.age = value;
+            }
         }
-    }
 
-    public override string ToString()
-    {
-        string result = String.Empty;
+        public string Email
+        {
+            get
+            {
+                return this.email;
+            }
 
-        result = !string.IsNullOrEmpty(this.Email) ? $"Name: {this.Name}, Age: {this.Age}, Email: {this.Email}" :
-                                      $"Name: {this.Name}, Age: {this.Age}, No email";
+            set
+            {           
+                if (!string.IsNullOrEmpty(value) && !value.Contains("@"))
+                {
+                    throw new ArgumentException("Invalid email!");
+                }
 
-        return result;
+                this.email = value;
+            }
+        }
+
+        public override string ToString()
+        {
+            string result = string.Empty;
+
+            result = !string.IsNullOrEmpty(this.Email) ? $"Name: {this.Name}, Age: {this.Age}, Email: {this.Email}" :
+                $"Name: {this.Name}, Age: {this.Age}, No email";
+
+            return result;
+        }
     }
 }
-
