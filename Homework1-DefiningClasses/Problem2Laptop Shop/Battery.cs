@@ -1,40 +1,57 @@
-﻿
-using System;
-
-public class Battery
+﻿namespace Problem2Laptop_Shop
 {
-    private string battery;
-    private double batteryLife;
+    using System;
 
-    public Battery(string battery, double batteryLife)
+    public class Battery
     {
-        this.Batt = battery;
-        this.BatteryLife = batteryLife;
-    }
+        private string batteryModel;
+        private double batteryLife;
 
-    public string Batt
-    {
-        get { return this.battery; }
-        set
+        public Battery(string model, double life)
         {
-            if (String.IsNullOrEmpty(value))
-            {
-                throw new ArgumentException("Battery can not be empty!");
-            }
-            this.battery = value;
+            this.BatteryModel = model;
+            this.BatteryLife = life;
         }
-    }
-    public double BatteryLife
-    {
-        get { return this.batteryLife; }
-        set
+
+        public string BatteryModel
         {
-            if (value <= 0)
+            get
             {
-                throw new ArgumentException("Battery life can not be negative or null!");
+                return this.batteryModel;
             }
-            this.batteryLife = value;
+
+            set
+            {
+                if (value == string.Empty)
+                {
+                    throw new ArgumentException("Battery can not be empty!");
+                }
+
+                this.batteryModel = value;
+            }
+        }
+
+        public double BatteryLife
+        {
+            get
+            {
+                return this.batteryLife;
+            }
+
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Battery life can not be negative or null!");
+                }
+
+                this.batteryLife = value;
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"{this.BatteryModel}\nbattery life: {this.BatteryLife} hours";
         }
     }
 }
-
