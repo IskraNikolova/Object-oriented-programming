@@ -1,47 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-public class EnterNumbers
+﻿namespace Problem2EnterNumbers
 {
-    private const int Count = 10;
-    private const int MinNumber = 1;
-    private const int MaxNumber = 100;
+    using System;
+    using System.Linq;
 
-    private static List<int> result; 
-    public static void Main()
+    public class EnterNumbers
     {
-        result = new List<int>();
-        while (result.Count < Count)
+        public static void Main()
         {
+            int[] numbers = new int[10];
+
+            for (int i = 0; i < 10; i++)
+            {
+                int maxArrayElement = numbers.Max();
+                int min = Math.Max(2, maxArrayElement + 1);
+                int max = 100 - 10 + i;
+
+                Console.Write("Enter a number: ");
+                numbers[i] = ReadNumber(min, max);
+            }
+
+            Console.WriteLine("\nYou entered the following 10 numbers:");
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("Number {0}: {1}", i + 1, numbers[i]);
+            }
+        }
+
+        public static int ReadNumber(int start, int end)
+        {
+            string input = Console.ReadLine();
+
             try
             {
-                int number = ReadNumber(MinNumber, MaxNumber);
-                int number2 = ReadNumber(result[result.Count - 1], MaxNumber);
-                result.Add(!result.Any() ? number : number2);
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                Console.WriteLine("Number must be in range[1...100]");
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid number!Try again!");
-            }
-        }
-        
-        Console.WriteLine(string.Join(", ", result));      
-    }
+                int num = int.Parse(input);
 
-    public static int ReadNumber(int start, int end)
-    {
-        Console.Write("Enter a number in range [{0}...{1}] ", start + 1, end - 1);
-        int number = int.Parse(Console.ReadLine());
-        if (number <= start || number >= end)
-        {
-            throw new ArgumentOutOfRangeException($"Number must be in range[{start + 1}...{end - 1}]");
+                if (num < start || num > end)
+                {
+                    throw new ArgumentOutOfRangeException(
+                        nameof(start),
+                        $"Number should be between {start} and {end}.");
+                }
+
+                return num;
+            }
+            catch (Exception)
+            {
+                Console.Write("Number should be in the range [{0} ... {1}]. Please re-enter: ", start, end);
+                return ReadNumber(start, end);
+            }
         }
-        return number;
     }
 }
-

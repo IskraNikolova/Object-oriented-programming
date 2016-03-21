@@ -1,31 +1,40 @@
-﻿using System;
-
-public class SquareRoot
+﻿namespace Problem1SquareRoot
 {
-    public static void Main()
+    using System;
+
+    public class SquareRoot
     {
-        try
+        public static void Main()
         {
-            double inputNumber = double.Parse(Console.ReadLine());
-            double squareRoot = Math.Sqrt(inputNumber);
-            if (inputNumber < 0)
+            try
             {
-                throw new ArgumentOutOfRangeException();
+                double inputNumber = double.Parse(Console.ReadLine());
+
+                if (inputNumber < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                double squareRoot = Math.Sqrt(inputNumber);
+
+                Console.WriteLine($"Square root is {squareRoot}");
             }
-            Console.WriteLine(squareRoot);
-        }
-        catch (FormatException)
-        {
-            Console.WriteLine("Invalid number!");
-        }
-        catch (ArgumentOutOfRangeException)
-        {
-            Console.WriteLine("Invalid number!");
-        }
-        finally
-        {
-            Console.WriteLine("Good bye!");
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid number!");
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("Invalid number!");
+            }
+            catch (ArithmeticException ax)
+            {
+                Console.WriteLine(ax.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Good bye!");
+            }
         }
     }
 }
-
