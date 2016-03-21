@@ -5,8 +5,8 @@ public class Paths
 {
     public static void Main()
     {
-        Point3D point1 = new Point3D(0, 5, 1);
-        Point3D point2 = new Point3D(-3, 20, 0);
+        Point3D point1 = new Point3D(5, 1, 0);
+        Point3D point2 = new Point3D(20, 0, -3);
         Path3D path = new Path3D(point1, point2);
 
         Storage.SavePathToFile("path.txt", path.ToString());

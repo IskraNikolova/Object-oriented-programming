@@ -31,7 +31,7 @@ public class Storage
                     double y = double.Parse(matches[1].Groups[1].Value);
                     double z = double.Parse(matches[2].Groups[1].Value);
 
-                    Point3D point = new Point3D(x, y, z);
+                    Point3D point = new Point3D(y, z, x);
                     path.AddPoints(point);
                 }
 
