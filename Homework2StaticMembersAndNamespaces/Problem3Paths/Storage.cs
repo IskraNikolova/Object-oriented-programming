@@ -1,44 +1,45 @@
-﻿using System.IO;
-using System.Text.RegularExpressions;
-using Problem1Point3D;
-
-
-public class Storage
+﻿namespace Problem3Paths
 {
-    public static void SavePathToFile(string filePath, string path)
+    using System.IO;
+    using System.Text.RegularExpressions;
+    using Problem1Point3D;
+
+    public class Storage
     {
-        using (StreamWriter writer = new StreamWriter(filePath))
+        public static void SavePathToFile(string filePath, string path)
         {
-            writer.WriteLine(path);
-        }
-    }
-
-    public static Path3D LoadPathFromFile(string filepath)
-    {
-        Path3D path = new Path3D();
-
-        using (StreamReader reader = new StreamReader(filepath))
-        {
-            string line = reader.ReadLine();
-            const string PointPattern = @"[xyz=:\-\s](\d+(?:(?:\.|,)\d+)*)";
-
-            while (line != null)
+            using (StreamWriter writer = new StreamWriter(filePath))
             {
-                MatchCollection matches = Regex.Matches(line, PointPattern);
-                if (matches.Count == 3)
-                {
-                    double x = double.Parse(matches[0].Groups[1].Value);
-                    double y = double.Parse(matches[1].Groups[1].Value);
-                    double z = double.Parse(matches[2].Groups[1].Value);
-
-                    Point3D point = new Point3D(y, z, x);
-                    path.AddPoints(point);
-                }
-
-                line = reader.ReadLine();
+                writer.WriteLine(path);
             }
         }
-        return path;
+
+        public static Path3D LoadPathFromFile(string filepath)
+        {
+            Path3D path = new Path3D();
+
+            using (StreamReader reader = new StreamReader(filepath))
+            {
+                string line = reader.ReadLine();
+                const string PointPattern = @"[xyz=:\-\s](\d+(?:(?:\.|,)\d+)*)";
+
+                while (line != null)
+                {
+                    MatchCollection matches = Regex.Matches(line, PointPattern);
+                    if (matches.Count == 3)
+                    {
+                        double x = double.Parse(matches[0].Groups[1].Value);
+                        double y = double.Parse(matches[1].Groups[1].Value);
+                        double z = double.Parse(matches[2].Groups[1].Value);
+
+                        Point3D point = new Point3D(y, z, x);
+                        path.AddPoints(point);
+                    }
+
+                    line = reader.ReadLine();
+                }
+            }
+            return path;
+        }
     }
 }
-

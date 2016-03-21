@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Problem4Namespaces
+﻿namespace Problem4Namespaces
 {
     public class MainProblem
     {
