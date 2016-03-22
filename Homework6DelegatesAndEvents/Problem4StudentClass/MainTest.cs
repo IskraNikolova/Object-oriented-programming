@@ -12,8 +12,7 @@ namespace Problem4StudentClass
             student.Name = "Milko";
             student.Age = 21;
         }
-        //Property changed: Name (from Peter to Maria)
-
+    
         private static void EventChanges(object sender, PropertyChangedEventArgs args)
         {
             Console.WriteLine(
