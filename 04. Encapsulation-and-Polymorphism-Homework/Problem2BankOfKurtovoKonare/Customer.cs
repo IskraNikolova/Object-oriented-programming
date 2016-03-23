@@ -1,26 +1,32 @@
-﻿
-using System;
-
-public class Customer
+﻿namespace Problem2BankOfKurtovoKonare
 {
-    private string type;
+    using System;
 
-    public Customer(string type)
+    public class Customer
     {
-        this.Type = type;
-    }
+        private string type;
 
-    public string Type
-    {
-        get { return this.type; }
-        private set
+        public Customer(string type)
         {
-            if (value != "individuals" && value != "companies")
+            this.Type = type;
+        }
+
+        public string Type
+        {
+            get
             {
-                throw new FormatException("Customer must be \"individuals\" or \"companies\"");
+                return this.type;
             }
-            this.type = value;
+
+            private set
+            {
+                if (value != "individuals" && value != "companies")
+                {
+                    throw new FormatException("Customer must be \"individuals\" or \"companies\"");
+                }
+
+                this.type = value;
+            }
         }
     }
 }
-

@@ -1,28 +1,30 @@
-﻿
-using Problem2BankOfKurtovoKonare.Interfaces;
-
-public class Deposit : Account, IWithdrawable
+﻿namespace Problem2BankOfKurtovoKonare.Accounts
 {
-    public Deposit(Customer customer, decimal balance, decimal interestRate) 
-        : base(customer, balance, interestRate)
-    {
-    }
 
-    public void WithdrawMoney(decimal money)
-    {
-        this.Balance -= money;
-    }
+    using Problem2BankOfKurtovoKonare.Interfaces;
 
-    public override decimal CalculateInterestRate(int months)
+    public class Deposit : Account, IWithdrawable
     {
-        if (this.Balance > 0 && this.Balance < 1000)
+        public Deposit(Customer customer, decimal balance, decimal interestRate) 
+            : base(customer, balance, interestRate)
         {
-            return 0;
         }
-        else
+
+        public void WithdrawMoney(decimal money)
         {
-            return base.CalculateInterestRate(months);
-        }      
+            this.Balance -= money;
+        }
+
+        public override decimal CalculateInterestRate(int months)
+        {
+            if (this.Balance > 0 && this.Balance < 1000)
+            {
+                return 0;
+            }
+            else
+            {
+                return base.CalculateInterestRate(months);
+            }      
+        }
     }
 }
-

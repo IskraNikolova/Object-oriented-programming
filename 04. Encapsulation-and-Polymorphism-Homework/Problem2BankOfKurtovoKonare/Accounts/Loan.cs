@@ -1,20 +1,22 @@
-﻿public class Loan : Account
+﻿namespace Problem2BankOfKurtovoKonare.Accounts
 {
-    public Loan(Customer customer, decimal balance, decimal interestRate)
-        : base(customer, balance, interestRate)
+    public class Loan : Account
     {
-    }
-
-    public override decimal CalculateInterestRate(int months)
-    {
-        if (this.Customer.Type == "individuals")
+        public Loan(Customer customer, decimal balance, decimal interestRate)
+            : base(customer, balance, interestRate)
         {
-            return base.CalculateInterestRate(months - 3);
         }
-        else
+
+        public override decimal CalculateInterestRate(int months)
         {
-            return base.CalculateInterestRate(months - 2);
-        }       
+            if (this.Customer.Type == "individuals")
+            {
+                return base.CalculateInterestRate(months - 3);
+            }
+            else
+            {
+                return base.CalculateInterestRate(months - 2);
+            }       
+        }
     }
 }
-

@@ -1,33 +1,35 @@
-﻿
-public class Mortgage : Account
+﻿namespace Problem2BankOfKurtovoKonare.Accounts
 {
-    public Mortgage(Customer customer, decimal balance, decimal interestRate)
-        : base(customer, balance, interestRate)
+    public class Mortgage : Account
     {
-    }
-
-    public override decimal CalculateInterestRate(int months)
-    {
-        decimal result;
-        if (this.Customer.Type == "individuals")
+        public Mortgage(Customer customer, decimal balance, decimal interestRate)
+            : base(customer, balance, interestRate)
         {
-            result = months <= 6 ? 0 : base.CalculateInterestRate(months - 6);
-        
         }
-        else
+
+        public override decimal CalculateInterestRate(int months)
         {
-            if (months <= 12)
+            decimal result;
+            if (this.Customer.Type == "individuals")
             {
-                result = base.CalculateInterestRate(months)/2;
+                result = months <= 6 ? 0 : base.CalculateInterestRate(months - 6);
+        
             }
             else
             {
-                decimal firstMounth = base.CalculateInterestRate(12) / 2;
-                decimal secondMonth = base.CalculateInterestRate(months - 12);
-                result = firstMounth + secondMonth;
+                if (months <= 12)
+                {
+                    result = base.CalculateInterestRate(months)/2;
+                }
+                else
+                {
+                    decimal firstMounth = base.CalculateInterestRate(12) / 2;
+                    decimal secondMonth = base.CalculateInterestRate(months - 12);
+                    result = firstMounth + secondMonth;
+                }
             }
+
+            return result;
         }
-        return result;
     }
 }
-

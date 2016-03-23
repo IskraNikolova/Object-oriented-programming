@@ -1,61 +1,67 @@
-﻿
-using System;
-using Problem2BankOfKurtovoKonare.Interfaces;
-
-public abstract class Account : IInterestRate, IDepositable
+﻿namespace Problem2BankOfKurtovoKonare.Accounts
 {
-    private decimal balance;
-    private decimal interestRate;
+    using System;
+    using Problem2BankOfKurtovoKonare.Interfaces;
 
-    protected Account(Customer customer, decimal balance, decimal interestRate)
+    public abstract class Account : IInterestRate, IDepositable
     {
-        this.Customer = customer;
-        this.Balance = balance;
-        this.InterestRate = interestRate;
-    }
+        private decimal balance;
+        private decimal interestRate;
 
-    public Customer Customer { get; set; }
-
-    public decimal Balance
-    {
-        get { return this.balance; }
-        protected set
+        protected Account(Customer customer, decimal balance, decimal interestRate)
         {
-            if (value < 0)
-            {
-                throw new ArgumentOutOfRangeException("Balance cannot be negative!");
-            }
-            this.balance = value;
+            this.Customer = customer;
+            this.Balance = balance;
+            this.InterestRate = interestRate;
         }
-    }
 
-    public decimal InterestRate
-    {
-        get { return this.interestRate; }
-        protected set
+        public Customer Customer { get; set; }
+
+        public decimal Balance
         {
-            if (value < 0)
+            get { return this.balance; }
+            protected set
             {
-                throw new ArgumentOutOfRangeException("Interest rate cannot be negative!");
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "Balance cannot be negative!");
+                }
+
+                this.balance = value;
             }
-            this.interestRate = value;
         }
-    }
 
-    public virtual decimal CalculateInterestRate(int months)
-    {
-        return this.Balance*(1 + this.InterestRate*months);
-    }
+        public decimal InterestRate
+        {
+            get
+            {
+                return this.interestRate;
+            }
+            protected set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "Interest rate cannot be negative!");
+                }
 
-    public void DepositMoney(decimal money)
-    {
-        this.Balance += money;
-    }
+                this.interestRate = value;
+            }
+        }
 
-    public override string ToString()
-    {
-        return
-            $"{GetType().Name} account of {this.Customer.Type} type has {this.Balance} and {this.InterestRate} interest rate(monthly based).";
+        public virtual decimal CalculateInterestRate(int months)
+        {
+            return this.Balance*(1 + this.InterestRate*months);
+        }
+
+        public void DepositMoney(decimal money)
+        {
+            this.Balance += money;
+        }
+
+        public override string ToString()
+        {
+            return
+                $"{GetType().Name} account of {this.Customer.Type} type has {this.Balance} and {this.InterestRate} interest rate(monthly based).";
+        }
     }
 }
-
