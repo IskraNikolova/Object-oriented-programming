@@ -1,27 +1,50 @@
-﻿
-using Problem1Shapes;
-
-public class Circle : IShape
+﻿namespace Problem1Shapes.Shape
 {
-    private const int Мultiplier = 2;
-    private const double PI = 3.14;
-    private double radius ;
 
-    public Circle(double radius)
+    using System;
+    using Problem1Shapes.Interfaces;
+
+    public class Circle : IShape
     {
-        this.Radius = radius;
-    }
+        private const int Мultiplier = 2;
+        private const double PI = 3.14;
+        private double radius;
 
-    public double Radius { get; set; }
+        public Circle(double radius)
+        {
+            this.Radius = radius;
+        }
 
-    public double CalculateArea()
-    {
-        return PI * (this.Radius * this.Radius);
-    }
+        public double Radius
+        {
+            get
+            {
+                return this.radius;
+            }
 
-    public double CalculatePerimeter()
-    {
-        return Мultiplier * PI * this.Radius;
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "Radius cannot be negative or null.");
+                }
+
+                this.radius = value;
+            }
+        }
+
+        public double CalculateArea()
+        {
+            double area = PI * (Math.Pow(this.Radius, 2));
+
+            return area;
+        }
+
+        public double CalculatePerimeter()
+        {
+            double perimeter = Мultiplier * PI * this.Radius;
+
+            return perimeter;
+        }
     }
 }
-

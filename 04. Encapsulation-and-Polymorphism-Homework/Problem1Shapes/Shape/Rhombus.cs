@@ -1,22 +1,26 @@
-﻿
-public class Rhombus : BasicShape
+﻿namespace Problem1Shapes.Shape
 {
-    private const int Мultiplier = 2;
-
-    public Rhombus(double width, double height)
-        : base(width, height)
+    public class Rhombus : BasicShape
     {
-    }
+        private const int Мultiplier = 4;
 
-    public override double CalculateArea()
-    {
-        return this.Height * this.Width;
-    }
+        public Rhombus(double size)
+            : base(size, size)
+        {
+        }
 
-    public override double CalculatePerimeter()
-    {
-        return (this.Height * Мultiplier) + (this.Width * Мultiplier);
-    }
+        public override double CalculateArea()
+        {
+            double area = this.Width * this.Width;
 
+            return area;
+        }
+
+        public override double CalculatePerimeter()
+        {
+            double perimeter = Мultiplier * this.Width;
+
+            return perimeter;
+        }
+    }
 }
-

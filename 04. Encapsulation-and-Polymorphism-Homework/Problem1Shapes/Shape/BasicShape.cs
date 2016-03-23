@@ -1,23 +1,58 @@
-﻿
-using Problem1Shapes;
-
-public abstract class BasicShape : IShape
+﻿namespace Problem1Shapes.Shape
 {
-    private double width;
-    private double height;
+    using System;
+    using Problem1Shapes.Interfaces;
 
-    protected BasicShape(double width, double height)
+    public abstract class BasicShape : IShape
     {
-        this.Width = width;
-        this.Height = height;
+        private double width;
+        private double height;
+
+        protected BasicShape(double width, double height)
+        {
+            this.Width = width;
+            this.Height = height;
+        }
+
+        public double Width
+        {
+            get
+            {
+                return this.width;
+            }
+
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "Width cannot be a negative.");
+                }
+
+                this.width = value;
+            }
+        }
+
+        public double Height
+        {
+            get
+            {
+                return this.height;
+            }
+
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "Height cannot be a negative.");
+                }
+
+                this.height = value;
+            }
+        }
+
+        public abstract double CalculateArea();
+
+        public abstract double CalculatePerimeter();
+
     }
-
-    public double Width { get; set; }
-    public double Height { get; set; }
-
-    public abstract double CalculateArea();
-
-    public abstract double CalculatePerimeter();
-
 }
-
