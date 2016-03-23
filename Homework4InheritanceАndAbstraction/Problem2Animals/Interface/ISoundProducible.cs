@@ -1,4 +1,7 @@
-﻿public interface ISoundProducible
+﻿namespace Problem2Animals.Interface
 {
-    void ProduceSound();
+    public interface ISoundProducible
+    {
+        void ProduceSound();
+    }
 }

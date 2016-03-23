@@ -1,10 +1,10 @@
-﻿
-using System;
-using Problem3CompanyHierarchy.Interfaces;
-
-namespace Problem3CompanyHierarchy.Person.Employee
+﻿namespace Problem3CompanyHierarchy.Person.Employee
 {
-    public class Employee :global::Person, IEmployee
+
+    using System;
+    using Problem3CompanyHierarchy.Interfaces;
+
+    public class Employee : Person, IEmployee
     {
         private decimal salary;
         private string department;
@@ -18,26 +18,36 @@ namespace Problem3CompanyHierarchy.Person.Employee
 
         public decimal Salary
         {
-            get { return this.salary; }
+            get
+            {
+                return this.salary;
+            }
+
             set
             {
                 if (value < 0)
                 {
-                    throw new ArgumentNullException("Salary cannot be negative!");
+                    throw new ArgumentNullException(nameof(value), "Salary cannot be negative!");
                 }
+
                 this.salary = value;
             }
         }
 
         public string Department
         {
-            get { return this.department; }
+            get
+            {
+                return this.department;
+            }
+
             set
             {
                 if (value != "Production" && value != "Accounting" && value != "Sales" && value != "Marketing")
                 {
                     throw new FormatException("Department must be: Production\\Accounting\\Sales\\Marketing");
                 }
+
                 this.department = value;
             }
         }

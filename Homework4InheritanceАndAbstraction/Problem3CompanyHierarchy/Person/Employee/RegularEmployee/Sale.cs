@@ -1,9 +1,8 @@
-﻿
-using System;
-using Problem3CompanyHierarchy.Interfaces;
-
-namespace Problem3CompanyHierarchy.Person.Employee
+﻿namespace Problem3CompanyHierarchy.Person.Employee.RegularEmployee
 {
+    using System;
+    using Problem3CompanyHierarchy.Interfaces;
+
     public class Sale : ISale
     {
         private string productName;
@@ -19,13 +18,18 @@ namespace Problem3CompanyHierarchy.Person.Employee
 
         public string ProductName
         {
-            get { return this.productName; }
+            get
+            {
+                return this.productName;
+            }
+
             set
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException("Product name cannot be empty!");
+                    throw new ArgumentNullException(nameof(value), "Product name cannot be empty!");
                 }
+
                 this.productName = value;
             }
         }
@@ -34,13 +38,18 @@ namespace Problem3CompanyHierarchy.Person.Employee
 
         public decimal Price
         {
-            get { return this.price; }
+            get
+            {
+                return this.price;
+            }
+
             set
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("Price cannot be negative!");
+                    throw new ArgumentOutOfRangeException(nameof(value), "Price cannot be negative!");
                 }
+
                 this.price = value;
             }
         }

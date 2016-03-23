@@ -1,62 +1,74 @@
-﻿
-using System;
-using Problem3CompanyHierarchy.Interfaces;
-
-public abstract class Person : IPerson
+﻿namespace Problem3CompanyHierarchy.Person
 {
-    private string id;
-    private string firstName;
-    private string lastName;
+    using System;
+    using Problem3CompanyHierarchy.Interfaces;
 
-    protected Person(string id, string firstName, string lastName)
+    public abstract class Person : IPerson
     {
-        this.ID = id;
-        this.FirstName = firstName;
-        this.LastName = lastName;
-    }
+        private string id;
+        private string firstName;
+        private string lastName;
 
-    public string ID
-    {
-        get { return this.id; }
-        set
+        protected Person(string id, string firstName, string lastName)
         {
-            if (value.Length < 10)
-            {
-                throw new FormatException("Invalid ID!");
-            }
-            this.id = value;
+            this.ID = id;
+            this.FirstName = firstName;
+            this.LastName = lastName;
         }
-    }
 
-    public string FirstName
-    {
-        get { return this.firstName; }
-        set
+        public string ID
         {
-            if (string.IsNullOrEmpty(value))
+            get
             {
-                throw new ArgumentNullException("First name cannot be empty!");
+                return this.id;
             }
-            this.firstName = value;
-        }
-    }
 
-    public string LastName
-    {
-        get { return this.lastName; }
-        set
+            set
+            {
+                if (value.Length < 10)
+                {
+                    throw new FormatException("Invalid ID!");
+                }
+
+                this.id = value;
+            }
+        }
+
+        public string FirstName
         {
-            if (string.IsNullOrEmpty(value))
+            get { return this.firstName; }
+            set
             {
-                throw new ArgumentNullException("Last name cannot be empty!");
-            }
-            this.lastName = value;
-        }
-    }
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException(nameof(value), "First name cannot be empty!");
+                }
 
-    public override string ToString()
-    {
-        return $"ID: {this.ID} Full Name: {this.FirstName} {this.LastName}";
+                this.firstName = value;
+            }
+        }
+
+        public string LastName
+        {
+            get
+            {
+                return this.lastName;
+            }
+
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException(nameof(value), "Last name cannot be empty!");
+                }
+
+                this.lastName = value;
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"ID: {this.ID} Full Name: {this.FirstName} {this.LastName}";
+        }
     }
 }
-

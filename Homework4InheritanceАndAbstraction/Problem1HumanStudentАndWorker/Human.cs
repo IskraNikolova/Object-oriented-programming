@@ -1,45 +1,57 @@
-﻿
-using System;
-
-public abstract class Human
+﻿namespace Problem1HumanStudentАndWorker
 {
-    private string firstName;
-    private string lastName;
 
-    protected Human(string firstName, string lastName)
+    using System;
+
+    public abstract class Human
     {
-        this.FirstName = firstName;
-        this.LastName = lastName;
-    }
+        private string firstName;
+        private string lastName;
 
-    public string FirstName {
-        get { return this.firstName; }
-        set
+        protected Human(string firstName, string lastName)
         {
-            if (string.IsNullOrEmpty(value))
-            {
-                throw new ArgumentNullException("First name cannot be empty!");
-            }
-            this.firstName = value;
+            this.FirstName = firstName;
+            this.LastName = lastName;
         }
-    }
 
-    public string LastName
-    {
-        get { return this.lastName; }
-        set
+        public string FirstName {
+            get
+            {
+                return this.firstName;
+            }
+
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException(nameof(value), "First name cannot be empty!");
+                }
+
+                this.firstName = value;
+            }
+        }
+
+        public string LastName
         {
-            if (string.IsNullOrEmpty(value))
+            get
             {
-                throw new ArgumentNullException("Last name cannot be empty!");
+                return this.lastName;
             }
-            this.lastName = value;
-        }
-    }
 
-    public override string ToString()
-    {
-        return $"{this.FirstName} {this.LastName}";
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException(nameof(value), "Last name cannot be empty!");
+                }
+
+                this.lastName = value;
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"{this.FirstName} {this.LastName}";
+        }
     }
 }
-

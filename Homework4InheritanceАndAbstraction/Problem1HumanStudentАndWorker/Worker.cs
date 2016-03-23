@@ -1,31 +1,34 @@
-﻿
-using System.Globalization;
-using System.Threading;
-
-public class Worker : Human
+﻿namespace Problem1HumanStudentАndWorker
 {
-    private readonly decimal WeekSalary;
-    private readonly int WorkHoursPerDay;
-    private const int WorkDay = 5;
+    using System.Globalization;
+    using System.Threading;
 
-    public Worker(string firstName, string lastName, decimal WeekSalary, int WorkHoursPerDay) 
-        : base(firstName, lastName)
+    public class Worker : Human
     {
-        this.WeekSalary = WeekSalary;
-        this.WorkHoursPerDay = WorkHoursPerDay;
-    }
+        private const int WorkDay = 5;
 
-    public decimal MoneyPerHour()
-    {
-        int workHoursForWeek = WorkHoursPerDay*WorkDay;
-        decimal result = WeekSalary/workHoursForWeek;
-        return result;
-    }
+        private readonly decimal weekSalary;
+        private readonly int workHoursPerDay;
+        
+        public Worker(string firstName, string lastName, decimal weekSalary, int workHoursPerDay)
+            : base(firstName, lastName)
+        {
+            this.weekSalary = weekSalary;
+            this.workHoursPerDay = workHoursPerDay;
+        }
 
-    public override string ToString()
-    {
-        Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("bg-BG");
-        return base.ToString() + $" - money for hour {this.MoneyPerHour():F2}lv.";
+        public decimal MoneyPerHour()
+        {
+            int workHoursForWeek = workHoursPerDay * WorkDay;
+            decimal result = weekSalary / workHoursForWeek;
+
+            return result;
+        }
+
+        public override string ToString()
+        {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("bg-BG");
+            return base.ToString() + $" - money for hour {this.MoneyPerHour():F2}lv.";
+        }
     }
 }
-

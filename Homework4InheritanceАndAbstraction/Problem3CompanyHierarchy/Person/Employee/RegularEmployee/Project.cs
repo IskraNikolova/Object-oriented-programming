@@ -1,9 +1,8 @@
-﻿
-using System;
-using Problem3CompanyHierarchy.Interfaces;
-
-namespace Problem3CompanyHierarchy.Person.Employee
+﻿namespace Problem3CompanyHierarchy.Person.Employee.RegularEmployee
 {
+    using System;
+    using Problem3CompanyHierarchy.Interfaces;
+
     public class Project : IProject
     {
         private string projectName;
@@ -26,8 +25,9 @@ namespace Problem3CompanyHierarchy.Person.Employee
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException("Project name cannot be empty!");
+                    throw new ArgumentNullException(nameof(value), "Project name cannot be empty!");
                 }
+
                 this.projectName = value;
             }
         }
@@ -36,25 +36,35 @@ namespace Problem3CompanyHierarchy.Person.Employee
 
         public string Details
         {
-            get { return this.details; }
+            get
+            {
+                return this.details;
+            }
+
             set
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException("Details cannot be empty!");
+                    throw new ArgumentNullException(nameof(value), "Details cannot be empty!");
                 }
+
                 this.details = value;
             }
         }
 
         public string State{
-            get { return this.state; }
+            get
+            {
+                return this.state;
+            }
+
             set
             {
                 if (value != "open" && value != "closed")
                 {
                     throw new FormatException("State must be open or closed!");
                 }
+
                 this.state = value;
             }
         }

@@ -1,16 +1,17 @@
-﻿
-using System;
-
-public class Cat : Animal
+﻿namespace Problem2Animals.Animal.Cat
 {
-    public Cat(string name, int age, string gender)
-    : base(name, age, gender)
-    {
-    }
+    using System;
 
-    public override void ProduceSound()
+    public class Cat : Animal
     {
-        Console.WriteLine("{0} said Mauuuuuuuu!", this.Name);
+        public Cat(string name, int age, string gender)
+            : base(name, age, gender)
+        {
+        }
+
+        public override void ProduceSound()
+        {
+            Console.WriteLine($"{this.Name} said Mauuuuuuuu!");
+        }
     }
 }
-

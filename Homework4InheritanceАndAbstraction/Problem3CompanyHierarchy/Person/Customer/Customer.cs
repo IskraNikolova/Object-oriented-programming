@@ -1,10 +1,10 @@
-﻿
-using System;
-using Problem3CompanyHierarchy.Interfaces;
-
-namespace Problem3CompanyHierarchy.Person.Customer
+﻿namespace Problem3CompanyHierarchy.Person.Customer
 {
-    public class Customer : global::Person, ICustomer
+
+    using System;
+    using Problem3CompanyHierarchy.Interfaces;
+
+    public class Customer : Person, ICustomer
     {
         private decimal amount;
 
@@ -16,13 +16,18 @@ namespace Problem3CompanyHierarchy.Person.Customer
 
         public decimal Amount
         {
-            get { return this.amount; }
+            get
+            {
+                return this.amount;
+            }
+
             set
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("Amount cannot be negative!");
+                    throw new ArgumentOutOfRangeException(nameof(value), "Amount cannot be negative!");
                 }
+
                 this.amount = value;
             }
         }

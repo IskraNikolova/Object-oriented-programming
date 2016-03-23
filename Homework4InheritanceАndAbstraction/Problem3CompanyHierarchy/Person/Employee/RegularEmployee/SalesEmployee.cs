@@ -1,10 +1,9 @@
-﻿
-using System.Collections.Generic;
-using System.Linq;
-using Problem3CompanyHierarchy.Interfaces;
-
-namespace Problem3CompanyHierarchy.Person.Employee
+﻿namespace Problem3CompanyHierarchy.Person.Employee.RegularEmployee
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Problem3CompanyHierarchy.Interfaces;
+
     public class SalesEmployee : RegularEmployee, ISalesEmployee
     {
         private List<Sale> sales;

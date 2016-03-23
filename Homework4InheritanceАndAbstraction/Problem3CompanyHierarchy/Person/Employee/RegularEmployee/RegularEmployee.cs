@@ -1,5 +1,4 @@
-﻿
-namespace Problem3CompanyHierarchy.Person.Employee
+﻿namespace Problem3CompanyHierarchy.Person.Employee.RegularEmployee
 {
     public abstract class RegularEmployee : Employee
     {

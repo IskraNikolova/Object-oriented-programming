@@ -1,9 +1,10 @@
-﻿
-public class Kitten : Cat
+﻿namespace Problem2Animals.Animal.Cat
 {
-    public Kitten(string name, int age, string gender = "female")
-    : base(name, age, gender)
+    public class Kitten : Cat
     {
+        public Kitten(string name, int age)
+            : base(name, age, "female")
+        {
+        }
     }
 }
-

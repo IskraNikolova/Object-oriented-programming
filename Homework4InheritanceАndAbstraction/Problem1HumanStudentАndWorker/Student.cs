@@ -1,31 +1,39 @@
 ﻿
-using System;
-
-public class Student : Human
+namespace Problem1HumanStudentАndWorker
 {
-    private int facultyNumber;
+    using System;
 
-    public Student(string firstName, string lastName, int facultyNumber)
-        : base(firstName, lastName)
+    public class Student : Human
     {
-        this.FacultyNumber = facultyNumber;
-    }
+        private int facultyNumber;
 
-    public int FacultyNumber {
-        get { return this.facultyNumber; }
-        set
+        public Student(string firstName, string lastName, int facultyNumber)
+            : base(firstName, lastName)
         {
-            if (value.ToString().Length < 5 && value.ToString().Length > 10)
+            this.FacultyNumber = facultyNumber;
+        }
+
+        public int FacultyNumber
+        {
+            get
             {
-                throw new ArgumentOutOfRangeException("Faculty number must be in range[5...10]!");
+                return this.facultyNumber;
             }
-            this.facultyNumber = value;
+
+            set
+            {
+                if (value.ToString().Length < 5 && value.ToString().Length > 10)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "Faculty number must be in range[5...10]!");
+                }
+
+                this.facultyNumber = value;
+            }
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + $" - faculty number {this.FacultyNumber}";
         }
     }
-
-    public override string ToString()
-    {
-        return base.ToString() + $" - faculty number {this.FacultyNumber}";
-    }
 }
-

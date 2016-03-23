@@ -1,10 +1,10 @@
-﻿
-using System.Collections.Generic;
-using System.Text;
-using Problem3CompanyHierarchy.Interfaces;
-
-namespace Problem3CompanyHierarchy.Person.Employee
+﻿namespace Problem3CompanyHierarchy.Person.Employee
 {
+
+    using System.Collections.Generic;
+    using System.Text;
+    using Problem3CompanyHierarchy.Interfaces;
+
     public class Manager : Employee, IManager
     {
         private List<Employee> employees; 
@@ -24,6 +24,7 @@ namespace Problem3CompanyHierarchy.Person.Employee
             {
                 result.Append(employee + "\n");
             }
+
             return base.ToString() + $"\n{result}";
         }
     }
