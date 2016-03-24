@@ -1,4 +1,7 @@
-﻿namespace TheSlum
+﻿using TheSlum.Interfaces;
+using TheSlum.UI;
+
+namespace TheSlum
 {
     using GameEngine;
 
@@ -6,7 +9,9 @@
     {
         public static void Main()
         {
-            Engine engine = new Engine();
+            IRenderer renderer = new ConsoleRenderer();
+            IInputHandler inputHandler = new ConsoleInputHandler();
+            Engine engine = new Engine(renderer, inputHandler);
 
             engine.Run();
         }

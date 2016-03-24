@@ -51,7 +51,7 @@
         public override string ToString()
         {
             return string.Format(
-                "Name: {0}, Team: {2}, Health: {1}, Defense: {3}",
+                "-- Name: {0}, Team: {2}, Health: {1}, Defense: {3}",
                 this.Id,
                 this.HealthPoints,
                 this.Team,

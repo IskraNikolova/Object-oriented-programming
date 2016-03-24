@@ -53,10 +53,14 @@
     <Compile Include="GameObjects\Items\Shield.cs" />
     <Compile Include="Interfaces\IAttack.cs" />
     <Compile Include="Interfaces\IHeal.cs" />
+    <Compile Include="Interfaces\IInputHandler.cs" />
+    <Compile Include="Interfaces\IRenderer.cs" />
     <Compile Include="Interfaces\ITimeoutable.cs" />
     <Compile Include="GameObjects\Items\Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Team.cs" />
+    <Compile Include="UI\ConsoleInputHandler.cs" />
+    <Compile Include="UI\ConsoleRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

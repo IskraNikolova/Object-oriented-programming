@@ -16,10 +16,16 @@
 
         private List<Bonus> timeoutItems;
 
-        public Engine()
+        public Engine(IRenderer renderer, IInputHandler inputHandler)
         {
             this.characterList = new List<Character>();
+            this.Renderer = renderer;
+            this.InputHandler = inputHandler;
         }
+
+        public IRenderer Renderer { get; set; }
+
+        public IInputHandler InputHandler { get; set; }
 
         public void Run()
         {
@@ -218,7 +224,7 @@
         {
             foreach (var character in characters)
             {
-                Console.WriteLine(character.ToString());
+               this.Renderer.WriteLine(character.ToString());
             }
         }
 
@@ -233,12 +239,12 @@
 
             if (redTeamCount == blueTeamCount)
             {
-                Console.WriteLine("Tie game!");
+                this.Renderer.WriteLine("Tie game!");
             }
             else
             {
                 string winningTeam = redTeamCount > blueTeamCount ? "Red" : "Blue";
-                Console.WriteLine(winningTeam + " team wins the game!");
+                this.Renderer.WriteLine(winningTeam + " team wins the game!");
             }
 
             var aliveCharacters = this.characterList.Where(c => c.IsAlive);
@@ -247,13 +253,13 @@
 
         private void ReadUserInput()
         {
-            string inputLine = Console.ReadLine();
+            string inputLine = this.InputHandler.ReadLine();
             while (inputLine != string.Empty)
             {
                 string[] parameters = inputLine.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
                 this.ExecuteCommand(parameters);
-                inputLine = Console.ReadLine();
+                inputLine = this.InputHandler.ReadLine();
             }
         }
     }
