@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheSlum", "TheSlum.csproj",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem1Shapes", "..\Problem1Shapes\Problem1Shapes.csproj", "{7DD3EACA-C37A-4C2F-8DE0-778818F8C6EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem2BankOfKurtovoKonare", "Problem2BankOfKurtovoKonare\Problem2BankOfKurtovoKonare.csproj", "{9D179153-BD17-4CB7-9326-BD0595383E24}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{7DD3EACA-C37A-4C2F-8DE0-778818F8C6EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DD3EACA-C37A-4C2F-8DE0-778818F8C6EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DD3EACA-C37A-4C2F-8DE0-778818F8C6EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9D179153-BD17-4CB7-9326-BD0595383E24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9D179153-BD17-4CB7-9326-BD0595383E24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9D179153-BD17-4CB7-9326-BD0595383E24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9D179153-BD17-4CB7-9326-BD0595383E24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

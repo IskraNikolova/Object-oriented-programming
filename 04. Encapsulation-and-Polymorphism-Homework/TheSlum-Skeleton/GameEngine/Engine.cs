@@ -3,19 +3,28 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Interfaces;
+    using TheSlum.GameObjects.Characters;
+    using TheSlum.GameObjects.Items;
+    using TheSlum.GameObjects.Items.Bonus;
+    using TheSlum.Interfaces;
 
-    internal class Engine
+    public class Engine
     {
         private const int GameTurns = 4;
 
-        private readonly List<Character> characterList = new List<Character>();
+        private readonly List<Character> characterList;
 
         private List<Bonus> timeoutItems;
+
+        public Engine()
+        {
+            this.characterList = new List<Character>();
+        }
 
         public void Run()
         {
             this.ReadUserInput();
+
             this.InitializeTimeoutItems();
 
             for (int i = 0; i < GameTurns; i++)
@@ -34,14 +43,14 @@
             this.PrintGameOutcome();
         }
 
-        private void ProcessItemTimeout(List<Bonus> timeoutItems)
+        private void ProcessItemTimeout(List<Bonus> timeOutItems)
         {
-            for (int i = 0; i < timeoutItems.Count; i++)
+            for (int i = 0; i < timeOutItems.Count; i++)
             {
-                timeoutItems[i].Countdown--;
-                if (timeoutItems[i].Countdown == 0)
+                timeOutItems[i].Countdown--;
+                if (timeOutItems[i].Countdown == 0)
                 {
-                    var item = timeoutItems[i];
+                    var item = timeOutItems[i];
                     item.HasTimedOut = true;
                     var itemHolder = this.GetCharacterByItem(item);
                     itemHolder.RemoveFromInventory(item);
@@ -52,8 +61,11 @@
 
         private void InitializeTimeoutItems()
         {
-            this.timeoutItems =
-                this.characterList.SelectMany(c => c.Inventory).Where(i => i is Bonus).Cast<Bonus>().ToList();
+            this.timeoutItems = this.characterList
+                .SelectMany(c => c.Inventory)
+                .Where(i => i is Bonus)
+                .Cast<Bonus>()
+                .ToList();
         }
 
         private void ExecuteCommand(string[] inputParams)
@@ -85,7 +97,8 @@
                         150,
                         50,
                         300,
-                        (Team)Enum.Parse(typeof(Team), inputParams[5], true),
+                        (Team)Enum.Parse(typeof(Team), 
+                        inputParams[5], true),
                         5);
                     this.characterList.Add(newCharacter);
                     break;
@@ -97,7 +110,8 @@
                         200,
                         100,
                         150,
-                        (Team)Enum.Parse(typeof(Team), inputParams[5], true),
+                        (Team)Enum.Parse(typeof(Team), 
+                        inputParams[5], true),
                         2);
                     this.characterList.Add(newCharacter);
                     break;
@@ -109,7 +123,8 @@
                         75,
                         50,
                         60,
-                        (Team)Enum.Parse(typeof(Team), inputParams[5], true),
+                        (Team)Enum.Parse(typeof(Team), 
+                        inputParams[5], true),
                         6);
                     this.characterList.Add(newCharacter);
                     break;
@@ -147,10 +162,9 @@
 
         private void ProcessTargetSearch(Character currentCharacter)
         {
-            var availableTargets =
-                this.characterList.Where(
-                    t => this.IsWithinRange(currentCharacter.X, currentCharacter.Y, t.X, t.Y, currentCharacter.Range))
-                    .ToList();
+            var availableTargets =this.characterList
+                .Where(t => this.IsWithinRange(currentCharacter.X, currentCharacter.Y, t.X, t.Y, currentCharacter.Range))
+                .ToList();
 
             if (availableTargets.Count == 0)
             {
@@ -184,8 +198,8 @@
 
         private bool IsWithinRange(int attackerX, int attackerY, int targetX, int targetY, int range)
         {
-            double distance =
-                Math.Sqrt(((attackerX - targetX) * (attackerX - targetX)) + ((attackerY - targetY) * (attackerY - targetY)));
+            double distance = Math.Sqrt(((attackerX - targetX) * (attackerX - targetX)) + 
+                ((attackerY - targetY) * (attackerY - targetY)));
 
             return distance <= range;
         }
@@ -211,8 +225,11 @@
         private void PrintGameOutcome()
         {
             var charactersAlive = this.characterList.Where(c => c.IsAlive);
-            var redTeamCount = charactersAlive.Count(x => x.Team == Team.Red);
-            var blueTeamCount = charactersAlive.Count(x => x.Team == Team.Blue);
+            var redTeamCount = charactersAlive
+                .Count(x => x.Team == Team.Red);
+
+            var blueTeamCount = charactersAlive
+                .Count(x => x.Team == Team.Blue);
 
             if (redTeamCount == blueTeamCount)
             {

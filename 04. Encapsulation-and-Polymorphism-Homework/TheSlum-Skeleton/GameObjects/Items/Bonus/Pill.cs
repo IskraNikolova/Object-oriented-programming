@@ -1,14 +1,14 @@
 ﻿
-using TheSlum;
-
-public class Pill : Bonus
+namespace TheSlum.GameObjects.Items.Bonus
 {
-    public Pill(string id, int healthEffect = 0, int defenseEffect = 0, int attackEffect = 100)
-            : base(id, healthEffect, defenseEffect, attackEffect)
+    public class Pill : Bonus
     {
-        this.Countdown = 1;
-        this.Timeout = 1;
-        this.HasTimedOut = false;
+        public Pill(string id)
+            : base(id, 0, 0, 100)
+        {
+            this.Countdown = 1;
+            this.Timeout = 1;
+            this.HasTimedOut = false;
+        }
     }
 }
-

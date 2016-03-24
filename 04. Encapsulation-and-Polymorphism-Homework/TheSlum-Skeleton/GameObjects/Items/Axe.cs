@@ -1,11 +1,10 @@
-﻿
-using TheSlum;
-
-public class Axe : Item
+﻿namespace TheSlum.GameObjects.Items
 {
-    public Axe(string id, int healthEffect = 0, int defenseEffect = 0, int attackEffect = 75)
-        : base(id, healthEffect, defenseEffect, attackEffect)
+    public class Axe : Item
     {
+        public Axe(string id)
+            : base(id, 0, 0, 75)
+        {
+        }
     }
 }
-

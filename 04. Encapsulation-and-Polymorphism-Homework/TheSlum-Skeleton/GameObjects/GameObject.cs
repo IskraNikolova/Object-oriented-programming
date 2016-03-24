@@ -1,4 +1,4 @@
-﻿namespace TheSlum
+﻿namespace TheSlum.GameObjects
 {
     public abstract class GameObject
     {

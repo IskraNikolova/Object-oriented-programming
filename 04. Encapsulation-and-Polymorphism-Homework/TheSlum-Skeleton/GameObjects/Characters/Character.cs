@@ -1,6 +1,7 @@
-﻿namespace TheSlum
-{ 
+﻿namespace TheSlum.GameObjects.Characters
+{
     using System.Collections.Generic;
+    using TheSlum.GameObjects.Items;
 
     public abstract class Character : GameObject
     {
@@ -19,19 +20,19 @@
 
         public int HealthPoints { get; set; }
 
-        public int DefensePoints { get; set; }
+        public int DefensePoints { get; private set; }
 
         public Team Team { get; private set; }
 
         public List<Item> Inventory { get; private set; }
 
-        public int Range { get; set; }
+        public int Range { get; private set; }
 
         public bool IsAlive { get; set; }
 
-        public int X { get; set; }
+        public int X { get; private set; }
 
-        public int Y { get; set; }
+        public int Y { get; private set; }
 
         public abstract Character GetTarget(IEnumerable<Character> targetsList);
 
