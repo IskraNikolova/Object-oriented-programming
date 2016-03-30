@@ -1,58 +1,61 @@
-﻿using System;
-
-[AttributeUsage(AttributeTargets.Struct
-    | AttributeTargets.Class
-    | AttributeTargets.Interface
-    | AttributeTargets.Enum
-    | AttributeTargets.Method)]
-public class VersionAttribute : Attribute
+﻿namespace Problem3GenericList
 {
-    private const string CanBeNegative = "{0} number should be positive or 0";
+    using System;
 
-    private int major;
-    private int minor;
-
-    public VersionAttribute(int major, int minor)
+    [AttributeUsage(AttributeTargets.Struct
+                    | AttributeTargets.Class
+                    | AttributeTargets.Interface
+                    | AttributeTargets.Enum
+                    | AttributeTargets.Method)]
+    public class Version : Attribute
     {
-        this.Major = major;
-        this.Minor = minor;
-    }
+        private const string CanBeNegative = "{0} number should be positive or 0";
 
-    public int Major
-    {
-        get
+        private int major;
+        private int minor;
+
+        public Version(int major, int minor)
         {
-            return this.major;
+            this.Major = major;
+            this.Minor = minor;
         }
 
-        private set
+        public int Major
         {
-            IsNotNegative(value, "Major");
-            this.major = value;
-        }
-    }
+            get
+            {
+                return this.major;
+            }
 
-    public int Minor
-    {
-        get
-        {
-            return this.minor;
+            private set
+            {
+                IsNotNegative(value, "Major");
+                this.major = value;
+            }
         }
 
-        private set
+        public int Minor
         {
-            IsNotNegative(value, "Minor");
-            this.minor = value;
-        }
-    }
+            get
+            {
+                return this.minor;
+            }
 
-    private static void IsNotNegative(int value, string title)
-    {
-        if (value < 0)
+            private set
+            {
+                IsNotNegative(value, "Minor");
+                this.minor = value;
+            }
+        }
+
+        private static void IsNotNegative(int value, string title)
         {
-            throw new ArgumentOutOfRangeException(
-                title,
-                string.Format(CanBeNegative, title));
+            if (value < 0)
+            {
+                throw new ArgumentOutOfRangeException(
+                    title,
+                    string.Format(CanBeNegative, title));
+            }
         }
     }
 }

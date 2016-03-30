@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Problem1GalacticGPS
+﻿namespace Problem1GalacticGPS
 {
+    using System;
+
     public class MainTest
     {
         public static void Main()

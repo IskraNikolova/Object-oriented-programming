@@ -1,8 +1,9 @@
-﻿using System;
-
-namespace Problem3GenericList
+﻿namespace Problem3GenericList
 {
-    [Version(2,13213424)]
+    using System;
+    using System.Text;
+
+    [Version(2, 11)]
     public class GenericList<T>
         where T : IComparable<T>
     {
@@ -14,197 +15,192 @@ namespace Problem3GenericList
         public GenericList(int capacity = DefaultCapacity)
         {
             this.array = new T[capacity];
-            this.currentCapacity = capacity;
             this.index = 0;
+            this.currentCapacity = capacity;
         }
 
-        /// <summary>
-        /// Length of collection
-        /// </summary>
         public int Length
         {
-            get { return this.index; }
+            get
+            {
+                return this.index;
+            }
         }
 
-        /// <summary>
-        /// Add value on the collection
-        /// </summary>
-        /// <param name="item">value added</param>
+        public T this[int position]
+        {
+            get
+            {
+                this.ValidateIndex(position);
+                return this.array[position];
+            }
+
+            set
+            {
+                if (position >= this.index)
+                {
+                    this.index++;
+                }
+
+                this.array[position] = value;
+            }
+        }
+
         public void Add(T item)
         {
             this.array[this.index] = item;
             this.index++;
-            if (this.index == currentCapacity)
+            if (this.index == this.currentCapacity)
             {
-                this.Resize(this.currentCapacity * 2);
+                this.Resize(this.index * 2);
             }
         }
 
-        /// <summary>
-        /// Remove value of the position
-        /// </summary>
-        /// <param name="index">Index of value</param>
-        public void Remove(int index)
+        public void Remove(int indexToRemove)
         {
-            ValidateIndex(index);
-            this.array[index] = default(T);
-            for (int i = index; i < this.array.Length - 1; i++)
+            this.ValidateIndex(indexToRemove);
+
+            this.array[indexToRemove] = default(T);
+            for (int i = indexToRemove; i < this.array.Length - 1; i++)
             {
                 this.array[i] = this.array[i + 1];
             }
+
             this.index--;
         }
 
-        /// <summary>
-        /// Add value on index
-        /// </summary>
-        /// <param name="index">index of add</param>
-        /// <returns>Return value of this index</returns>
-        public T this[int index]
+        public void Insert(int indexToInsert, T item)
         {
-            get
-            {
-                ValidateIndex(index);
-                return this.array[index];
-            }
-            set
-            {
-                this.array[index] = value;
-                this.index++;
-            }
-        }
-
-        /// <summary>
-        /// Insert value of index
-        /// </summary>
-        /// <param name="index">Index where we insert</param>
-        /// <param name="value">Value for insert</param>
-        public void Insert(int index, T value)
-        {
-            ValidateIndex(index);
-            T[] arrayCopy = new T[currentCapacity];
-            for (int i = 0; i < currentCapacity; i++)
+            this.ValidateIndex(indexToInsert);
+            T[] arrayCopy = new T[this.currentCapacity];
+            for (int i = 0; i < this.currentCapacity; i++)
             {
                 arrayCopy[i] = this.array[i];
             }
 
-            for (int i = index + 1; i < this.array.Length; i++)
-            {  
+            for (int i = indexToInsert + 1; i < this.array.Length; i++)
+            {
                 T newValue = arrayCopy[i - 1];
                 this.array[i] = newValue;
             }
-            this.array[index] = value;
+
+            this.array[indexToInsert] = item;
             this.index++;
+
+            if (this.index == this.currentCapacity)
+            {
+                this.Resize(this.index * 2);
+            }
         }
 
-        /// <summary>
-        /// Clear all collection
-        /// </summary>
         public void Clear()
         {
-            for (int i = 0; i < currentCapacity; i++)
+            for (int i = 0; i < this.index; i++)
             {
                 this.array[i] = default(T);
             }
-            index = 0;
+
+            this.index = 0;
         }
 
-        /// <summary>
-        /// Find index of item
-        /// </summary>
-        /// <param name="item">Value</param>
-        /// <returns>Index</returns>
-        public int Find(T item)
+        public int IndexOf(T item)
         {
-            int findIndex = -1;
-            for (int i = 0; i < index; i++)
+            int searchIndex = -1;
+
+            for (int i = 0; i < this.index; i++)
             {
                 if (item.Equals(this.array[i]))
                 {
-                    findIndex = i;
+                    searchIndex = i;
                 }
             }
-            return findIndex;
+
+            return searchIndex;
         }
 
-        /// <summary>
-        /// Contains value of collection 
-        /// </summary>
-        /// <param name="item">Search value</param>
-        /// <returns>False or True</returns>
-        public bool Contains(T item)
+        public T Min()
         {
-            bool isContains = false;
-            for (int i = 0; i < index; i++)
+            T min = this.array[0];
+            for (int i = 1; i < this.index; i++)
             {
-                if (item.Equals(this.array[i]))
+                T currentElement = this.array[i];
+                if (currentElement.CompareTo(min) < 0)
                 {
-                    isContains = true;
+                    min = currentElement;
                 }
             }
-            return isContains;
+
+            return min;
+        }
+
+        public T Max()
+        {
+            T max = this.array[0];
+            for (int i = 1; i < this.index; i++)
+            {
+                T currentElement = this.array[i];
+                if (currentElement.CompareTo(max) > 0)
+                {
+                    max = currentElement;
+                }
+            }
+
+            return max;
         }
 
         public override string ToString()
         {
-            T[] resultaArray = new T[index];
-
-            for (int i = 0; i < index; i++)
+            StringBuilder resultBuilder = new StringBuilder();
+            if (this.index > 0)
             {
-                resultaArray[i] = this.array[i];
+                for (int i = 0; i < this.index; i++)
+                {
+                    resultBuilder.AppendLine(this.array[i].ToString());
+                }
+
+                return resultBuilder.ToString().TrimEnd();
             }
 
-            string result = string.Empty;
-
-            if (resultaArray.Length > 0)
-            {
-                result = "[" + String.Join(", ", resultaArray) + "]";
-            }
-        
-            return result;
-        }
-
-        /// <summary>
-        /// Resize collection
-        /// </summary>
-        /// <param name="newCapacity">new size of capacity</param>
-        private void Resize(int newCapacity)
-        {
-            T[] newArray = new T[newCapacity];
-            for (int i = 0; i < this.index; i++)
-            {
-                newArray[i] = this.array[i];
-                this.array = newArray;
-                this.currentCapacity = newCapacity;
-            }
-        }
-
-        private void ValidateIndex(int index)
-        {
-            if (index >= this.index || index < 0)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(index),
-                    message: "Index is out of range!");
-            }
+            return string.Empty;
         }
 
         public string Version()
         {
-            var versionNum = string.Empty;
+            var version = string.Empty;
             var type = typeof(GenericList<T>);
-            var allAttributes = type.GetCustomAttributes(false);
-            foreach (var attr in allAttributes)
+            var attributes = type.GetCustomAttributes(false);
+            foreach (var attribute in attributes)
             {
-                var attribute = attr as VersionAttribute;
-                if (attribute != null)
+                var currentAttribute = attribute as Version;
+                if (currentAttribute != null)
                 {
-                    var version = attribute;
-                    versionNum = $"GenericList<T> version {version.Major}.{version.Minor}";
+                    var versionAttribute = currentAttribute;
+                    version = $"GenericList<T> version {versionAttribute.Major}.{versionAttribute.Minor}";
                 }
             }
 
-            return versionNum;
+            return version;
+        }
+
+        private void ValidateIndex(int validateIndex)
+        {
+            if (validateIndex < 0 || validateIndex > this.index - 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(validateIndex), "Index is out of range.");
+            }
+        }
+
+        private void Resize(int newCapacity)
+        {
+            T[] newArray = new T[newCapacity];
+
+            for (int i = 0; i < this.array.Length; i++)
+            {
+                newArray[i] = this.array[i];
+            }
+
+            this.array = newArray;
+            this.currentCapacity = newCapacity;
         }
     }
 }
