@@ -1,10 +1,12 @@
-﻿namespace Problem3GenericList
+﻿using System.Collections;
+
+namespace Problem3GenericList
 {
     using System;
     using System.Text;
 
     [Version(2, 11)]
-    public class GenericList<T>
+    public class GenericList<T> 
         where T : IComparable<T>
     {
         private const int DefaultCapacity = 16;
@@ -162,6 +164,32 @@
             }
 
             return string.Empty;
+        }
+
+        public bool Contains(T item)
+        {
+            bool isContains = false;
+
+            for (int i = 0; i < this.index; i++)
+            {
+                if (this.array[i].Equals(item))
+                {
+                    isContains = true;
+                }
+            }
+
+            return isContains;
+        }
+
+        public void Reverse()
+        {
+            T[] reverseArray = new T[this.currentCapacity];
+            for (int i = this.index - 1; i >= 0; i--)
+            {
+                reverseArray[i] = this.array[i];
+            }
+
+            this.array = reverseArray;
         }
 
         public string Version()

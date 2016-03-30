@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using System.Text;
 
 namespace GenericList.Test
 {
@@ -144,6 +145,31 @@ namespace GenericList.Test
             this.testCollection[3] = 2;
 
             Assert.AreEqual(10, testCollection.Max());
+        }
+
+
+        [TestMethod]
+        public void Test_Contains_ShouldReturnIsContainsThisItem()
+        {
+            testCollection.Add(2);
+            testCollection.Add(3);
+
+            bool resultTrue = testCollection.Contains(2);
+            bool resultFalse = testCollection.Contains(8);
+
+            Assert.AreEqual(true, resultTrue);
+            Assert.AreEqual(false, resultFalse);
+        }
+
+        public void Test_Reverse_ShouldReturnReverseArray()
+        {
+            testCollection.Add(2);
+            testCollection.Add(3);
+            testCollection.Add(4);
+
+            Assert.AreEqual(4, testCollection[0]);          
+            Assert.AreEqual(3, testCollection[1]);          
+            Assert.AreEqual(2, testCollection[2]);          
         }
     }
 }
