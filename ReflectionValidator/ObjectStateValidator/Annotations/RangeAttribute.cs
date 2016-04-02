@@ -2,9 +2,8 @@
 {   
     public class RangeAttribute : ValidationAttribute
     {
-        private int min;
-
-        private int max;
+        private readonly int min;
+        private readonly int max;
 
         public RangeAttribute(int min, int max)
         {
@@ -23,7 +22,7 @@
                     return true;
                 }
             }
-
+   
             return false;
         }
     }

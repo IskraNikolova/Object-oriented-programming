@@ -1,8 +1,6 @@
-﻿using System.Collections;
-
-namespace ObjectStateValidator.Annotations
+﻿namespace ObjectStateValidator.Annotations
 {
-    using System;
+    using System.Collections;
 
     public class ElementsAttribute : ValidationAttribute
     {

@@ -10,15 +10,13 @@ namespace TestValidator
         {
             var student = new Student()
             {
-                FirstName = "Pesho",
-  
+                FirstName = "Pesho",  
                 Age = 31,
                 Marks = new List<int>() {4, 2, 6},
                 Mentor =
                     new Student()
                     {
-                        FirstName = "Gosho",
-                    
+                        FirstName = "Gosho",                    
                         Age = 18,
                         Marks = new List<int>() {6, 6, 6}
                     }
