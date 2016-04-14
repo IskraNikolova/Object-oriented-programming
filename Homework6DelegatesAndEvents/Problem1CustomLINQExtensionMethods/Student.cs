@@ -1,5 +1,4 @@
-﻿
-namespace Problem1CustomLINQExtensionMethods
+﻿namespace Problem1CustomLINQExtensionMethods
 {
     public class Student
     { 
@@ -13,5 +12,9 @@ namespace Problem1CustomLINQExtensionMethods
 
         public double Grades { get; set; }
 
+        public override string ToString()
+        {
+            return $"{this.Name} - {this.Grades}";
+        }
     }
 }

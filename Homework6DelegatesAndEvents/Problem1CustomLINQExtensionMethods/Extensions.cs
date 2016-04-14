@@ -1,46 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Problem1CustomLINQExtensionMethods
+﻿namespace Problem1CustomLINQExtensionMethods
 {
+    using System;
+    using System.Collections.Generic;
+
     public static class Extensions
     {
-        public static IEnumerable<T> WhereNot<T>(
-            this IEnumerable<T> collection, 
-            Func<T, bool> predicate)
+        public static IEnumerable<T> WhereNot<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
         {
-            return (
-                from item in collection let shouldSave = predicate(item)
-                where !shouldSave
-                select item
-                ).ToList();
-        }
+            var filteredCollection = new List<T>();
 
-        public static TSelector Max<TSource, TSelector>(
-            this IEnumerable<TSource> collection,
-            Func<TSource, TSelector> selectFunc)
-            where TSelector : IComparable<TSelector>
-        {
+            foreach (var element in collection)
             {
-                var result = new List<TSelector>();
-                foreach (var element in collection)
+                if (!predicate(element))
                 {
-                    result.Add(selectFunc(element));
+                   filteredCollection.Add(element); 
                 }
-
-                var max = result[0];
-                for (var i = 1; i < result.Count; i++)
-                {
-                    if (result[i].CompareTo(max) > 0)
-                    {
-                        max = result[i];
-                    }
-                }
-
-                return max;
             }
+
+            return filteredCollection;
         }
 
+        public static TSelector MaxElement<TSource, TSelector>(this IEnumerable<TSource> collection,
+            Func<TSource, TSelector> condition) where TSelector : IComparable<TSelector>
+        {
+            var selectorCollection = new List<TSelector>();
+            foreach (var item in collection)
+            {
+                selectorCollection.Add(condition(item));
+            }
+
+            var max = selectorCollection[0];
+            for (int i = 0; i < selectorCollection.Count; i++)
+            {
+                if (max.CompareTo(selectorCollection[i]) < 0)
+                {
+                    max = selectorCollection[i];
+                }
+            }
+
+            return max;
+        }
     }
 }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem3AsynchronousTimer",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem4StudentClass", "Problem4StudentClass\Problem4StudentClass.csproj", "{56A92B90-83B5-41C3-B858-1CB26D4C0183}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomLINQExtensionMethod.Test", "CustomLINQExtensionMethod.Test\CustomLINQExtensionMethod.Test.csproj", "{AA0DB216-8501-498F-B1D5-F2B1B5234059}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{56A92B90-83B5-41C3-B858-1CB26D4C0183}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56A92B90-83B5-41C3-B858-1CB26D4C0183}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56A92B90-83B5-41C3-B858-1CB26D4C0183}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA0DB216-8501-498F-B1D5-F2B1B5234059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA0DB216-8501-498F-B1D5-F2B1B5234059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA0DB216-8501-498F-B1D5-F2B1B5234059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA0DB216-8501-498F-B1D5-F2B1B5234059}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
