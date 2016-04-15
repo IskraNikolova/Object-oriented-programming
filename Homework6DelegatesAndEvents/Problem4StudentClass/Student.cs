@@ -1,14 +1,16 @@
-﻿
-namespace Problem4StudentClass
+﻿namespace Problem4StudentClass
 {
+    using System;
+
     public class Student
     {
+        private const int MinAge = 1;
+        private const int MaxAge = 110;
+        public delegate void PropertyChangedEventHandler(object objects, PropertyChangedEventArgs args);
+        public event PropertyChangedEventHandler OnChange;
+
         private string name;
         private int age;
-
-        public delegate void PropertyChangedEventHandler(object objects, PropertyChangedEventArgs args);
-
-        public event PropertyChangedEventHandler OnPropertyChange;
 
         public Student(string name, int age)
         {
@@ -25,7 +27,16 @@ namespace Problem4StudentClass
 
             set
             {
-                this.IsChnaged(this.name, value, "Name");
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentNullException(nameof(value), "Name cannot be null!");
+                }
+
+                if (this.OnChange != null)
+                {
+                    this.OnChange(this, new PropertyChangedEventArgs(this.name, value, "Name"));
+                }
+
                 this.name = value;
             }
         }
@@ -39,16 +50,19 @@ namespace Problem4StudentClass
 
             set
             {
-                this.IsChnaged(this.age, value, "Age");
+
+                if (value < 0 || value > 110)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), $"Age must be in range[{MinAge}...{MaxAge}]");
+                }
+
+                if (this.OnChange != null)
+                {
+                    this.OnChange(this, new PropertyChangedEventArgs(this.age, value, "Age"));
+                }
+
                 this.age = value;
             }
         }
-
-        private void IsChnaged(object oldValue, object newValue, string title)
-        {
-            var onPropCh = this.OnPropertyChange;
-            onPropCh?.Invoke(this, new PropertyChangedEventArgs(oldValue, newValue, title));
-        }
     }
 }
-

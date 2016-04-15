@@ -1,14 +1,23 @@
-﻿using System;
-
-namespace Problem3AsynchronousTimer
+﻿namespace Problem3AsynchronousTimer
 {
+    using System;
+
     public class MainTest
     {
         public static void Main()
         {
-            var asyncTimer = new AsyncTimer(Console.WriteLine, 13, 500, "Some message");
-            
+            Action<object, EventArgs> action = GetTime;
+
+            var asyncTimer = new AsynchronousTimer(action, 10, 1000);
+            asyncTimer.OnTick += GetTime;
             asyncTimer.Run();
+
+        }
+
+        public static void GetTime(object sender, EventArgs args)
+        {
+            var dateTimeNow = DateTime.Now;
+            Console.WriteLine($"{dateTimeNow.ToString("HH:mm:ss")}");
         }
     }
 }

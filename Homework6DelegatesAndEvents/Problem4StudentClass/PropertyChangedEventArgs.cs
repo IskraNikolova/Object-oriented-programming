@@ -1,5 +1,4 @@
-﻿
-namespace Problem4StudentClass
+﻿namespace Problem4StudentClass
 {
     public class PropertyChangedEventArgs
     {

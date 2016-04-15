@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Problem2InterestCalculator
+﻿namespace Problem2InterestCalculator
 {
+    using System;
+
     public class MainTest
     {
         public static void Main()
@@ -26,4 +26,3 @@ namespace Problem2InterestCalculator
         }
     }
  }
-

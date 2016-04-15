@@ -1,14 +1,13 @@
-﻿
-using System;
-
-namespace Problem4StudentClass
+﻿namespace Problem4StudentClass
 {
+    using System;
+
     public class MainTest
     {
         public static void Main()
         {
             var student = new Student("Koko", 19);
-            student.OnPropertyChange += EventChanges;
+            student.OnChange += EventChanges;
             student.Name = "Milko";
             student.Age = 21;
         }

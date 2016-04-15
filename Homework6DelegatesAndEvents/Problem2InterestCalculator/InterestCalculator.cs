@@ -24,38 +24,53 @@ namespace Problem2InterestCalculator
 
         public decimal Money
         {
-            get { return this.money; }
+            get
+            {
+                return this.money;
+            }
+
             set
             {
                 if (value < 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Money cannot be negative.");
                 }
+
                 this.money = value;
             }
         }
 
         public decimal Interest
         {
-            get { return this.interest; }
+            get
+            {
+                return this.interest;
+            }
+
             set
             {
                 if (value < 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Interest cannot be negative.");
                 }
+
                 this.interest = value;
             }
         }
         public int Years
         {
-            get { return this.years; }
+            get
+            {
+                return this.years;
+            }
+
             set
             {
                 if (value < 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Years cannot be negative.");
                 }
+
                 this.years = value;
             }
         }
