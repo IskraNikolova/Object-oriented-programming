@@ -50,7 +50,6 @@
 
             set
             {
-
                 if (value < 0 || value > 110)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), $"Age must be in range[{MinAge}...{MaxAge}]");
