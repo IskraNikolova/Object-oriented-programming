@@ -8,7 +8,7 @@
 
     public class Validator : IValidate
     {
-        private object validatableObject;
+        private readonly object validatableObject;
         private bool objectValidated;
 
         public Validator(object validatableObject)

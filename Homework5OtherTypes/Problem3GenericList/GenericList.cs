@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace Problem3GenericList
+﻿namespace Problem3GenericList
 {
     using System;
     using System.Text;

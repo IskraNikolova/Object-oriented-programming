@@ -5,6 +5,7 @@
     public class ElementsAttribute : ValidationAttribute
     {
         private readonly int maxCount;
+
         public ElementsAttribute(int maxCount)
         {
             this.maxCount = maxCount;
