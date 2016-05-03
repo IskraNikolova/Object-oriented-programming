@@ -53,7 +53,7 @@
         {
             string yesOrNo = this.IsCarbonated ? "yes" : "no";
 
-            return base.ToString() + $"\nCarbonated: {yesOrNo}";
+            return base.ToString() + $"Carbonated: {yesOrNo}\n";
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace RestaurantManager.Models.Recipes.Meals
+﻿using System.Text;
+
+namespace RestaurantManager.Models.Recipes.Meals
 {
     using System;
     using RestaurantManager.Interfaces;
@@ -17,7 +19,10 @@
         public override string ToString()
         {
             string vegan = this.IsVegan ? "[VEGAN] " : "";
-            return vegan + base.ToString() + $"\nType: {this.Type}";
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Type: {this.Type}");
+
+            return vegan + base.ToString() + sb;
         }
     }
 }

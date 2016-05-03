@@ -1,4 +1,6 @@
-﻿namespace RestaurantManager.Models.Recipes.Meals
+﻿using System.Text;
+
+namespace RestaurantManager.Models.Recipes.Meals
 {
 
     using RestaurantManager.Interfaces;
@@ -17,8 +19,10 @@
         {
             string yesOrNo = this.ContainsPasta ? "yes" : "no";
             string vegan = this.IsVegan ? "[VEGAN] " : "";
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Contains pasta: {yesOrNo}");
 
-            return vegan + base.ToString() + $"\nContains pasta: {yesOrNo}";
+            return vegan + base.ToString() + sb;
         }
     }
 }

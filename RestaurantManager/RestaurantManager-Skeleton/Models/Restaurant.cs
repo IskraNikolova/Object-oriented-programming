@@ -52,81 +52,48 @@ namespace RestaurantManager.Models
         public string PrintMenu()
         {
             StringBuilder sb = new StringBuilder();
-            string result = string.Empty;
             sb.AppendLine($"***** {this.Name} - {this.Location} *****");
-            if (this.Recipes.Count == 0)
+        
+            if (!this.Recipes.Any())
             {
                 sb.Append("No recipes... yet");
-                result = sb.ToString();
+                return sb.ToString();
             }
-            else
-            { 
-                List<IDrink> drinks = new List<IDrink>();
-                List<ISalad> salads = new List<ISalad>();
-                List<IMainCourse> mainCourses = new List<IMainCourse>();
-                List<IDessert> dessert = new List<IDessert>();
-                foreach (var recipe in this.Recipes)
-                {
-                    if (recipe is IDrink)
-                    {
-                        drinks.Add(recipe as IDrink);
-                    }
-                    else if(recipe is ISalad)
-                    {
-                        salads.Add(recipe as ISalad);
-                    }
-                    else if (recipe is IMainCourse)
-                    {
-                        mainCourses.Add(recipe as IMainCourse);
-                    }
-                    else if (recipe is IDessert)
-                    {
-                        dessert.Add(recipe as IDessert);
-                    }
-                }
+                     
+            var drinks = this.Recipes.Where(r => r is IDrink).OrderBy(r => r.Name);
+            sb.Append(this.PrintArticles(drinks, "DRINKS"));
 
-                if (drinks.Count > 0)
-                {
-                    var orderedDrinks = drinks.OrderBy(d => d.Name);
-                    sb.AppendLine("~~~~~ DRINKS ~~~~~");
-                    foreach (var drink in orderedDrinks)
-                    {
-                        sb.AppendLine(drink.ToString());
-                    }
-                }
-                if (salads.Count > 0)
-                {
-                    var orderedSalad = salads.OrderBy(s => s.Name);
-                    sb.AppendLine("~~~~~ SALADS ~~~~~");
-                    foreach (var salad in orderedSalad)
-                    {
-                        sb.AppendLine(salad.ToString());
-                    }
-                }
-                if (mainCourses.Count > 0)
-                {
-                    var orderedmain = mainCourses.OrderBy(m => m.Name);
-                    sb.AppendLine("~~~~~ MAIN COURSES ~~~~~");
-                    foreach (var mainCourse in orderedmain)
-                    {
-                        sb.AppendLine(mainCourse.ToString());
-                    }
-                }
-                if (dessert.Count > 0)
-                {
-                    var orderedDessert = dessert.OrderBy(d => d.Name);
-                    sb.AppendLine("~~~~~ DESSERTS ~~~~~");
-                    foreach (var desert in orderedDessert)
-                    {
-                        sb.AppendLine(desert.ToString());
-                    }             
-                }
+            var salads = this.Recipes.Where(r => r is ISalad).OrderBy(r => r.Name);
+            sb.Append(this.PrintArticles(salads, "SALADS"));
 
-                string resultToString = sb.ToString();
-                result = resultToString.Substring(0, resultToString.Length - 1);
+            var mainCourses = this.Recipes.Where(r => r is IMainCourse).OrderBy(r => r.Name);
+            sb.Append(this.PrintArticles(mainCourses, "MAIN COURSES"));
+
+            var dessert = this.Recipes.Where(r => r is IDessert).OrderBy(r => r.Name);
+            sb.Append(this.PrintArticles(dessert, "DESSERTS"));
+
+       
+            sb.Remove(sb.Length - 1, 1);
+   
+            return sb.ToString();
+        }
+
+        private string PrintArticles(IEnumerable<IRecipe> recipes, string title)
+        {
+            if (recipes.Count() == 0)
+            {
+                return string.Empty;
             }
-    
-            return result;
+
+            StringBuilder articlesAsString = new StringBuilder();
+            recipes = recipes.OrderBy(r => r.Name);
+            articlesAsString.AppendFormat("{0} {1} {0}", new string('~', 5), title).AppendLine();
+            foreach (var recipe in recipes)
+            {
+                articlesAsString.Append(recipe);
+            }
+
+            return articlesAsString.ToString();
         }
     }
 }

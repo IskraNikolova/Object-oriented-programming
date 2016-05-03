@@ -119,7 +119,7 @@
             StringBuilder result = new StringBuilder();
             result.AppendLine($"==  {this.Name} == ${this.Price:F2}");
             result.AppendLine($"Per serving: {this.QuantityPerServing} {unit}, {this.Calories} kcal");
-            result.Append($"Ready in {this.TimeToPrepare} minutes");
+            result.AppendLine($"Ready in {this.TimeToPrepare} minutes");
 
             return result.ToString();
         }
