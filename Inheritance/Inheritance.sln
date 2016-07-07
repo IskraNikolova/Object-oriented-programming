@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mankind", "Mankind\Mankind.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mordor’s Cruelty Plan", "Mordor’s Cruelty Plan\Mordor’s Cruelty Plan.csproj", "{8DCBF8B9-EE78-48EA-BA47-27B1A46874DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online Radio Database", "Online Radio Database\Online Radio Database.csproj", "{7544294F-0CD6-47B1-8710-DA75C8B483E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animals", "Animals\Animals.csproj", "{9FF90685-DE30-4B49-AF08-10AB9D4ACCAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{8DCBF8B9-EE78-48EA-BA47-27B1A46874DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DCBF8B9-EE78-48EA-BA47-27B1A46874DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DCBF8B9-EE78-48EA-BA47-27B1A46874DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7544294F-0CD6-47B1-8710-DA75C8B483E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7544294F-0CD6-47B1-8710-DA75C8B483E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7544294F-0CD6-47B1-8710-DA75C8B483E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7544294F-0CD6-47B1-8710-DA75C8B483E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FF90685-DE30-4B49-AF08-10AB9D4ACCAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FF90685-DE30-4B49-AF08-10AB9D4ACCAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FF90685-DE30-4B49-AF08-10AB9D4ACCAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FF90685-DE30-4B49-AF08-10AB9D4ACCAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
