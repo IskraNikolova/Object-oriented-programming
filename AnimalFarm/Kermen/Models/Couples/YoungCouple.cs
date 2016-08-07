@@ -1,4 +1,5 @@
-﻿using Kermen.Interfaces;
+﻿using System.Runtime.CompilerServices;
+using Kermen.Interfaces;
 
 namespace Kermen.Models.Couples
 {
@@ -8,11 +9,21 @@ namespace Kermen.Models.Couples
             decimal tVCoast,
             decimal fridgeCoast,
             decimal laptopCost)
-            : base(profit, tVCoast, fridgeCoast)
+            : base(profit, 2, 20, tVCoast, fridgeCoast)
         {
-            this.CountOfRooms = 2;
-            this.RoomsElectricityCost = 20;
             this.LaptopCoast = laptopCost;
+        }
+
+        protected YoungCouple(decimal profit, int countOfRooms, int roomsElectricityCost,
+            decimal tVCoast,
+            decimal fridgeCoast,
+            decimal laptopCost)
+            : base(profit,
+                  countOfRooms, 
+                  roomsElectricityCost,
+                  tVCoast, 
+                  fridgeCoast)
+        {            
         }
 
         public decimal LaptopCoast { get; }

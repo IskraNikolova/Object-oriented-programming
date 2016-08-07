@@ -5,11 +5,11 @@
     public static class CalculateDoughCalories
     {
         public static int BaseCalories = 2;
-        private s 
+       
 
         public static double CalculateDoughCaloriesMethod()
         {
-            double floorType = TakeModifierToFloor(dough);
+           // double floorType = TakeModifierToFloor();
             double backType = TakeModifierToBack(dough);
             double result = (BaseCalories * dough.Grams) * floorType * backType;
 

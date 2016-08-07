@@ -6,10 +6,8 @@
             decimal tVCoast,
             decimal fridgeCoast,
             decimal stove) 
-            : base(profit, tVCoast, fridgeCoast)
+            : base(profit, 3, 15, tVCoast, fridgeCoast)
         {
-            this.CountOfRooms = 3;
-            this.RoomsElectricityCost = 15;
             this.Stove = stove;
         }
 

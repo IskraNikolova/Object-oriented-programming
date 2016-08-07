@@ -4,10 +4,10 @@ namespace Kermen.Models.Couples
 {
     public abstract class CoupleHome : Home, ICouple
     {
-        protected CoupleHome(decimal profit, 
+        protected CoupleHome(decimal profit, int countOfRoom, int roomsElectricityCost,
             decimal tVCoast, 
             decimal fridgeCoast)
-            : base(profit)
+            : base(profit, countOfRoom, roomsElectricityCost )
         {
             this.TVCoast = tVCoast;
             this.FridgeCoast = fridgeCoast;

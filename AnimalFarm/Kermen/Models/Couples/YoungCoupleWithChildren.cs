@@ -11,10 +11,8 @@ namespace Kermen.Models.Couples
             decimal fridgeCoast, 
             decimal laptopCost,
             List<Child> children) 
-            : base(profit, tVCoast, fridgeCoast, laptopCost)
+            : base(profit, 2, 30, tVCoast, fridgeCoast, laptopCost)
         {
-            this.CountOfRooms = 2;
-            this.RoomsElectricityCost = 30;
             this.Children = children;
         }
 

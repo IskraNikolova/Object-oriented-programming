@@ -3,10 +3,8 @@
     public class AloneOld : Home
     {
         public AloneOld(decimal profit) 
-            : base(profit)
+            : base(profit, 1, 15)
         {
-            this.CountOfRooms = 1;
-            this.RoomsElectricityCost = 15;
         }
     }
 }

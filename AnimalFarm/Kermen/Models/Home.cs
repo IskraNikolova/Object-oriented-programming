@@ -6,11 +6,11 @@ namespace Kermen.Models
     {
         private decimal homeBudget;
 
-        protected Home(decimal profit)
+        protected Home(decimal profit, int countOfRooms, int roomsElectricityCost)
         {
             this.Profit = profit;
-            this.CountOfRooms = CountOfRooms;
-            this.RoomsElectricityCost = RoomsElectricityCost;
+            this.CountOfRooms = countOfRooms;
+            this.RoomsElectricityCost = roomsElectricityCost;
             this.homeBudget = 0;
         }
 
